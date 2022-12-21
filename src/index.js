@@ -1,4 +1,14 @@
+class Bank {
+  showTransactions() {
+    console.log(this.transactions);
+  }
 
-console.log("Hello from ./src/index.js")
-test1()
-test2()
+  async init() {
+    this.transactions = "500";
+  }
+}
+
+const myBank = new Bank();
+
+myBank.init();
+myBank.showTransactions();
