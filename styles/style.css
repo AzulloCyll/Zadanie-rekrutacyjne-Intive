@@ -10,8 +10,17 @@ body {
 }
 
 main {
+  width: 800px;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   justify-content: center;
   align-items: center;
+}
+
+main .transaction {
+  width: 100%;
+  margin-bottom: 16px;
+  border: 1px solid black;
 }
