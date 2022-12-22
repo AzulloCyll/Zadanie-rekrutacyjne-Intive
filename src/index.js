@@ -1,4 +1,4 @@
-const main = document.querySelector("main")
+const main = document.querySelector("main .top")
 
 const generateDataArticles = async (element) => {
     let transactionData = await fetchTransactions()
