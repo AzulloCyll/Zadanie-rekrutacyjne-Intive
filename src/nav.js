@@ -2,7 +2,7 @@ const nav = document.querySelectorAll("body > header > nav > ul > li")
 const navLogoff = document.querySelector(
     "body > header > nav > ul > li:last-child > span.button"
 )
-const loginButton = document.querySelector("body > main > div.login > button")
+const loginButton = document.querySelector(".login input[type='submit'")
 const mainPages = document.querySelectorAll("main > div")
 
 const unsetHidden = (element) => {

@@ -10,9 +10,20 @@ body {
     grid-template-rows: 5vh 95vh;
 }
 
+h1 {
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
 header {
     grid-row: 1 / 2;
     width: 100%;
+    background: linear-gradient(
+        90deg,
+        rgb(140, 140, 192) 0%,
+        rgb(168, 173, 213) 100%
+    );
+    border-bottom: 1px white solid;
 }
 
 nav ul {
@@ -24,6 +35,7 @@ nav ul {
     justify-content: flex-start;
     align-items: center;
     height: 5vh;
+    color: white;
 }
 
 nav ul .active {
@@ -45,16 +57,25 @@ nav ul li:last-child span:first-child {
 }
 
 nav ul .button {
-    border: 1px solid grey;
     padding: 3px 12px;
     margin-left: 10px;
-    background-color: lightgrey;
+    background-color: #0049a8;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 500px;
+    color: white;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    text-shadow: 1px 1px 2px black;
+}
+
+nav ul .button:hover {
+    background-color: #005bd2;
 }
 
 main {
     grid-row: 2 / 3;
-    background-color: grey;
+    background-color: rgb(223, 239, 255);
 }
 
 main .unlogged,
@@ -63,10 +84,65 @@ main .register {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 95vh;
 }
 
+main .login form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .login form .line {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+main .login form .line label {
+    width: 15%;
+    margin-right: 10px;
+    text-align: right;
+    padding-top: 7px;
+}
+
+main .login form .line input {
+    padding: 10px 20px;
+    width: 75%;
+    border: none;
+    border-radius: 500px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    border: 1px solid #c4d5eb;
+}
+
+main .login form .line input[type="submit"] {
+    padding: 10px 20px;
+    width: auto;
+    text-transform: uppercase;
+    background-color: #0049a8;
+    color: white;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border: none;
+    text-shadow: 1px 1px 3px black;
+}
+
+main .login form .line input[type="submit"]:hover {
+    background-color: #005bd2;
+}
+
 .hidden {
     display: none !important;
+}
+
+@media screen and (min-width: 769px) {
+    main .login form {
+        width: 50%;
+    }
 }
