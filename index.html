@@ -16,11 +16,26 @@
 
     <body>
         <header>
-            <nav></nav>
+            <nav>
+                <ul>
+                    <li>Logowanie</li>
+                    <li>Rejestracja</li>
+                    <li class="hidden">
+                        <span>Daniel</span><span class="button">Wyloguj</span>
+                    </li>
+                </ul>
+            </nav>
         </header>
         <main>
-            <section class="top">Loading</section>
-            <section class="bottom">test</section>
+            <div class="unlogged">
+                Witaj na stronie. Zaloguj się lub zarejestruj
+            </div>
+            <div class="login hidden">
+                Logowanie
+                <button class="login-btn">Login</button>
+            </div>
+            <div class="register hidden">Rejestracja</div>
+            <div class="logged hidden">Transakcje</div>
         </main>
 
         <script src="./api/dataApi.js"></script>
