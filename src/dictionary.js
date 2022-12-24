@@ -1,10 +1,11 @@
 const dictionary = {
     en: {
         nav: { login: "Login", register: "Register" },
-        forms: {
+        labels: {
             login: "Login:",
             passwd: "Password:",
-            passwd2: "Retype password:",
+            email: "e-mail:",
+            email2: "Retype e-mail:",
         },
         buttons: { login: "Login", logout: "Logout", register: "Register" },
         text: {
@@ -18,10 +19,11 @@ const dictionary = {
 
     pl: {
         nav: { login: "Logowanie", register: "Rejestracja" },
-        forms: {
+        labels: {
             login: "Login:",
             passwd: "Hasło:",
-            passwd2: "Powtorz hasło:",
+            email: "e-mail:",
+            email2: "Powtórz e-mail:",
         },
         buttons: {
             login: "Zaloguj",

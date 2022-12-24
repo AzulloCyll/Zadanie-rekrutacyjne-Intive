@@ -5,42 +5,48 @@ const errors = document.getElementsByClassName("errors")
 const validateName = (input) => {
     const regex = new RegExp("^.{6,16}$") //all chars 6-16
 
-    if (input.value === "") {
-        console.log("Pusty")
-        return 0
-    } else if (regex.test(input.value)) {
-        console.log("Dobry")
+    if (regex.test(input.value)) {
+        setHidden(errors[0])
         return 1
     } else {
-        console.log("Zły")
+        unsetHidden(errors[0])
         return 0
     }
 }
 
-const validatePassword = (input) => {
-    const value = input.value
-    console.log(value)
-}
+const validateEmail = (input) => {
+    const regex = new RegExp(
+        "^([A-Z|a-z|0-9](.|_){0,1})+[A-Z|a-z|0-9]@([A-Z|a-z|0-9])+((.){0,1}[A-Z|a-z|0-9]){2}.[a-z]{2,3}$"
+    )
 
-const passwdCompare = (input1, input2) => {
-    if (input1.value !== input2.value) {
-        console.log("hasla niezgodne")
-        unsetHidden(errors[0])
+    console.log(regex)
+
+    console.log(regex.test(input.value))
+    if (regex.test(input.value)) {
+        setHidden(errors[1])
+        return 1
+    } else {
         unsetHidden(errors[1])
         return 0
+    }
+}
+
+const inputCompare = (input1, input2) => {
+    if (input1.value !== input2.value) {
+        console.log("e-maile niezgodne")
+        unsetHidden(errors[2])
+        unsetHidden(errors[4])
+        return 0
     } else {
-        setHidden(errors[0])
-        setHidden(errors[1])
+        setHidden(errors[2])
+        setHidden(errors[4])
         return 1
     }
 }
 
 registerButton.addEventListener("click", () => {
-    validateName(loginForm.name2)
-    validatePassword(loginForm.passwd2)
-    validatePassword(loginForm.passwd3)
-    const passwdCompareStatus = passwdCompare(
-        loginForm.passwd2,
-        loginForm.passwd3
-    )
+    const name = validateName(loginForm.name2)
+    validateEmail(loginForm.email)
+
+    const passwdCompareStatus = inputCompare(loginForm.email, loginForm.email2)
 })

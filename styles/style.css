@@ -182,6 +182,10 @@ main .register form .line button.register-btn:hover {
     position: absolute;
     color: red;
     top: 40px;
+    font-size: 12px;
+    text-align: left;
+    left: 232px;
+    display: inline-block;
 }
 
 @media screen and (min-width: 769px) {

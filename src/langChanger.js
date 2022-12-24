@@ -12,20 +12,22 @@ const setLanguage = (lang) => {
     document.querySelector(".login h1").innerHTML =
         dictionary[lang].text.loginH1
     document.querySelector(".login label[for='name']").innerHTML =
-        dictionary[lang].forms.login
+        dictionary[lang].labels.login
     document.querySelector(".login label[for='passwd']").innerHTML =
-        dictionary[lang].forms.passwd
+        dictionary[lang].labels.passwd
     document.querySelector(".login-btn").innerHTML =
         dictionary[lang].buttons.login
     //register screen
     document.querySelector(".register H1").innerHTML =
         dictionary[lang].text.registerH1
     document.querySelector(".register label[for='name2']").innerHTML =
-        dictionary[lang].forms.login
+        dictionary[lang].labels.login
     document.querySelector(".register label[for='passwd2']").innerHTML =
-        dictionary[lang].forms.passwd
-    document.querySelector(".register label[for='passwd3']").innerHTML =
-        dictionary[lang].forms.passwd2
+        dictionary[lang].labels.passwd
+    document.querySelector(".register label[for='email']").innerHTML =
+        dictionary[lang].labels.email
+    document.querySelector(".register label[for='email2']").innerHTML =
+        dictionary[lang].labels.email2
     document.querySelector(".register-btn").innerHTML =
         dictionary[lang].buttons.register
     // language changer
