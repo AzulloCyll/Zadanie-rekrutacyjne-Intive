@@ -103,6 +103,8 @@ main .register form .line {
     justify-content: center;
     width: 100%;
     margin-bottom: 24px;
+    position: relative;
+    margin-bottom: 36px;
 }
 
 main .login form .line label,
@@ -174,6 +176,12 @@ main .register form .line button.register-btn:hover {
 
 .lang a.active {
     text-decoration: underline;
+}
+
+.errors {
+    position: absolute;
+    color: red;
+    top: 40px;
 }
 
 @media screen and (min-width: 769px) {

@@ -63,11 +63,18 @@
                     <div class="line">
                         <label for="passwd2">Hasło:</label>
                         <input type="text" name="passwd2" id="passwd2" />
+                        <div class="errors hidden">
+                            <div class="unequal-passwd">Hasła niezgodne</div>
+                        </div>
                     </div>
                     <div class="line">
                         <label for="passwd3">Powtórz hasło:</label>
                         <input type="text" name="passwd3" id="passwd3" />
+                        <div class="errors hidden">
+                            <div class="unequal-passwd">Hasła niezgodne</div>
+                        </div>
                     </div>
+
                     <div class="line">
                         <button type="button" class="register-btn">
                             Zarejestruj
