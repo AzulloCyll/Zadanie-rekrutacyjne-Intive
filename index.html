@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,7 +19,7 @@
             <nav>
                 <ul>
                     <li>Logowanie</li>
-                    <li>Rejestracja</li>
+                    <li class="active">Rejestracja</li>
                     <li class="hidden">
                         <span>Daniel</span><span class="button">Wyloguj</span>
                     </li>
@@ -31,36 +31,62 @@
                 <h1>Witaj na stronie!</h1>
                 <p>Zaloguj się lub zarejestruj</p>
             </div>
-            <div class="login">
+            <div class="login hidden">
                 <h1>Logowanie</h1>
-                <form action="">
+                <form id="login">
                     <div class="line">
                         <label for="name">Login:</label>
                         <input
                             type="text"
                             name="name"
+                            id="name"
                             default="Wpisz nazwę użytkownika"
                         />
                     </div>
                     <div class="line">
                         <label for="passwd">Hasło:</label>
-                        <input type="text" name="passwd" />
+                        <input type="text" name="passwd" id="passwd" />
                     </div>
 
                     <div class="line">
-                        <input
-                            type="submit"
-                            class="login-btn"
-                            value="Zaloguj"
-                        />
+                        <button type="button" class="login-btn">Zaloguj</button>
                     </div>
                 </form>
             </div>
-            <div class="register hidden">Rejestracja</div>
+            <div class="register">
+                <h1>Rejestracja</h1>
+                <form id="register">
+                    <div class="line">
+                        <label for="name2">Login:</label>
+                        <input type="text" name="name2" id="name2" />
+                    </div>
+                    <div class="line">
+                        <label for="passwd2">Hasło:</label>
+                        <input type="text" name="passwd2" id="passwd2" />
+                    </div>
+                    <div class="line">
+                        <label for="passwd3">Powtórz hasło:</label>
+                        <input type="text" name="passwd3" id="passwd3" />
+                    </div>
+                    <div class="line">
+                        <button type="button" class="register-btn">
+                            Zarejestruj
+                        </button>
+                    </div>
+                </form>
+            </div>
             <div class="logged hidden">Transakcje</div>
         </main>
+        <div class="lang">
+            <span> Język:</span>
+            <a class="active">PL</a> |
+            <a> EN</a>
+        </div>
 
         <script src="./api/dataApi.js"></script>
+        <script src="./src/dictionary.js"></script>
+        <script src="./src/langChanger.js"></script>
+        <script src="./src/validate.js"></script>
         <script src="./src/nav.js"></script>
         <script src="./src/index.js"></script>
     </body>

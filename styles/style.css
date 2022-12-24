@@ -89,37 +89,54 @@ main .register {
     height: 95vh;
 }
 
-main .login form {
+main .login form,
+main .register form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-main .login form .line {
+main .login form .line,
+main .register form .line {
     display: flex;
     justify-content: center;
     width: 100%;
     margin-bottom: 24px;
 }
 
-main .login form .line label {
-    width: 15%;
+main .login form .line label,
+main .register form .line label {
     margin-right: 10px;
     text-align: right;
     padding-top: 7px;
 }
 
-main .login form .line input {
+main .login form .line input,
+main .register form .line input {
     padding: 10px 20px;
-    width: 75%;
     border: none;
     border-radius: 500px;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
     border: 1px solid #c4d5eb;
 }
 
-main .login form .line input[type="submit"] {
+main .login form .line label {
+    width: 15%;
+}
+main .login form .line input {
+    width: 75%;
+}
+
+main .register form .line label {
+    width: 30%;
+}
+main .register form .line input {
+    width: 60%;
+}
+
+main .login form .line button.login-btn,
+main .register form .line button.register-btn {
     padding: 10px 20px;
     width: auto;
     text-transform: uppercase;
@@ -130,10 +147,13 @@ main .login form .line input[type="submit"] {
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
         rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     border: none;
+    border-radius: 500px;
     text-shadow: 1px 1px 3px black;
+    transition: all 0.3s;
 }
 
-main .login form .line input[type="submit"]:hover {
+main .login form .line button.login-btn:hover,
+main .register form .line button.register-btn:hover {
     background-color: #005bd2;
 }
 
@@ -141,8 +161,24 @@ main .login form .line input[type="submit"]:hover {
     display: none !important;
 }
 
+.lang {
+    position: absolute;
+    font-size: 12px;
+    top: 40px;
+    left: 10px;
+}
+
+.lang a {
+    cursor: pointer;
+}
+
+.lang a.active {
+    text-decoration: underline;
+}
+
 @media screen and (min-width: 769px) {
-    main .login form {
-        width: 50%;
+    main .login form,
+    main .register form {
+        width: 60%;
     }
 }

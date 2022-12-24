@@ -1,9 +1,8 @@
+//selector for main page
 const main = document.querySelector("main > div.logged")
 
 const generateDataArticles = async (element) => {
     let transactionData = await fetchTransactions()
-
-    console.log(transactionData)
 
     transactionData.sort((a, b) => {
         return b.description.localeCompare(a.description)
@@ -22,3 +21,4 @@ const generateDataArticles = async (element) => {
 }
 
 generateDataArticles(main)
+initLanguageChanger()
