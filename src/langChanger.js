@@ -60,14 +60,12 @@ const initLanguageChanger = () => {
     PL.addEventListener("click", (e) => {
         PL.classList.add("active")
         EN.classList.remove("active")
-        console.log(e.target.innerHTML.toLowerCase())
         setLanguage(e.target.innerHTML.toLowerCase())
     })
 
     EN.addEventListener("click", (e) => {
         EN.classList.add("active")
         PL.classList.remove("active")
-        console.log(e.target.innerHTML.toLowerCase().trim())
         setLanguage(e.target.innerHTML.toLowerCase().trim())
     })
 }
