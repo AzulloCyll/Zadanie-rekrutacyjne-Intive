@@ -25,34 +25,21 @@ const showAll = (elements) => {
     }
 }
 
-const setActive = (element) => {
-    element.classList.add("active")
-}
-
-const unsetActiveAll = (elements) => {
-    for (el of elements) {
-        el.classList.remove("active")
-    }
-}
-
 nav[0].addEventListener("click", () => {
-    unsetActiveAll(nav)
     hideAll(mainPages)
-
-    setActive(nav[0])
+    setHidden(nav[0])
+    unsetHidden(nav[1])
     unsetHidden(mainPages[1])
 })
 
 nav[1].addEventListener("click", () => {
-    unsetActiveAll(nav)
     hideAll(mainPages)
-
-    setActive(nav[1])
+    setHidden(nav[1])
+    unsetHidden(nav[0])
     unsetHidden(mainPages[2])
 })
 
 navLogoff.addEventListener("click", () => {
-    unsetActiveAll(nav)
     hideAll(mainPages)
     showAll(nav)
     setHidden(nav[2])
@@ -61,7 +48,7 @@ navLogoff.addEventListener("click", () => {
 
 loginButton.addEventListener("click", (e) => {
     e.preventDefault()
-    unsetActiveAll(nav)
+
     hideAll(nav)
     hideAll(mainPages)
     unsetHidden(nav[2])
