@@ -14,15 +14,18 @@ const validateEmail = (input) => {
     return regex.test(input.value)
 }
 
-const inputCompare = (input1, input2) => {
-    if (input1.value !== input2.value) {
-        console.log("e-maile niezgodne")
-        unsetHidden(errors[2])
-        unsetHidden(errors[4])
+const validatePassword = (input) => {
+    if (input.value.length < 6) {
         return false
     } else {
-        setHidden(errors[2])
-        setHidden(errors[4])
+        return true
+    }
+}
+
+const inputCompare = (input1, input2) => {
+    if (input1.value !== input2.value) {
+        return false
+    } else {
         return true
     }
 }
@@ -48,6 +51,9 @@ const showErrors = (...inputs) => {
         unsetHidden(errors[2])
         unsetHidden(errors[4])
     }
+    if (!inputs[4]) {
+        unsetHidden(errors[5])
+    }
 }
 
 const validate = () => {
@@ -56,10 +62,29 @@ const validate = () => {
     const emailStatus = validateEmail(loginForm.email)
     const email2Status = validateEmail(loginForm.email2)
     const emailCompareStatus = inputCompare(loginForm.email, loginForm.email2)
+    const passwordStatus = validatePassword(loginForm.passwd2)
 
-    showErrors(nameStatus, emailStatus, email2Status, emailCompareStatus)
+    showErrors(
+        nameStatus,
+        emailStatus,
+        email2Status,
+        emailCompareStatus,
+        passwordStatus
+    )
+
+    // over validation status
+    if (
+        nameStatus &&
+        emailStatus &&
+        email2Status &&
+        emailCompareStatus &&
+        passwordStatus
+    ) {
+        return true
+    } else return false
 }
 
 registerButton.addEventListener("click", () => {
-    validate()
+    const validationStatus = validate()
+    console.log(validationStatus)
 })

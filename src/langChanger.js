@@ -48,6 +48,8 @@ const setLanguage = (lang) => {
     document.querySelector(
         "#register > div:nth-child(3) > div:nth-child(4)"
     ).innerHTML = dictionary[lang].errors.errorEmailNotMatch
+    document.querySelector("#register > div:nth-child(4) > div").innerHTML =
+        dictionary[lang].errors.errorPasswordToShort
 }
 
 const initLanguageChanger = () => {

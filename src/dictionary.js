@@ -19,6 +19,7 @@ const dictionary = {
             errorWrongName: "6-16 characters",
             errorWrongEmail: "wrong e-mail",
             errorEmailNotMatch: "e-mail's not match",
+            errorPasswordToShort: "min. 6 characters",
         },
     },
 
@@ -46,6 +47,7 @@ const dictionary = {
             errorWrongName: "6-16 znaków",
             errorWrongEmail: "nieprawidłowy e-mail",
             errorEmailNotMatch: "e-maile niezgodne",
+            errorPasswordToShort: "min. 6 znaków",
         },
     },
 }
