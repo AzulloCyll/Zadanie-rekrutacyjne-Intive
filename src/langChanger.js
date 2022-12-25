@@ -2,7 +2,7 @@ const setLanguage = (lang) => {
     // navigation
     nav[0].innerHTML = dictionary[lang].nav.login
     nav[1].innerHTML = dictionary[lang].nav.register
-    navLogoff.innerHTML = dictionary[lang].buttons.logout
+    logoffButton.innerHTML = dictionary[lang].buttons.logout
     // starting screen
     document.querySelector(".unlogged h1").innerHTML =
         dictionary[lang].text.unloggedH1
