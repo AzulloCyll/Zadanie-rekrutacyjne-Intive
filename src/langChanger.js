@@ -33,6 +33,21 @@ const setLanguage = (lang) => {
     // language changer
     document.querySelector(".lang span").innerHTML =
         dictionary[lang].text.language
+    // errors
+    document.querySelector("#register > div:nth-child(1) > div").innerHTML =
+        dictionary[lang].errors.errorWrongName
+    document.querySelector(
+        "#register > div:nth-child(2) > div:nth-child(3)"
+    ).innerHTML = dictionary[lang].errors.errorWrongEmail
+    document.querySelector(
+        "#register > div:nth-child(3) > div:nth-child(3)"
+    ).innerHTML = dictionary[lang].errors.errorWrongEmail
+    document.querySelector(
+        "#register > div:nth-child(2) > div:nth-child(4)"
+    ).innerHTML = dictionary[lang].errors.errorEmailNotMatch
+    document.querySelector(
+        "#register > div:nth-child(3) > div:nth-child(4)"
+    ).innerHTML = dictionary[lang].errors.errorEmailNotMatch
 }
 
 const initLanguageChanger = () => {

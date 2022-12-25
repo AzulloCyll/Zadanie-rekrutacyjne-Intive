@@ -15,6 +15,11 @@ const dictionary = {
             registerH1: "Register",
             language: "Language:",
         },
+        errors: {
+            errorWrongName: "6-16 characters",
+            errorWrongEmail: "wrong e-mail",
+            errorEmailNotMatch: "e-mail's not match",
+        },
     },
 
     pl: {
@@ -36,6 +41,11 @@ const dictionary = {
             unloggedP: "Zaloguj sie lub zarejestruj",
             registerH1: "Rejestracja",
             language: "Język:",
+        },
+        errors: {
+            errorWrongName: "6-16 znaków",
+            errorWrongEmail: "nieprawidłowy e-mail",
+            errorEmailNotMatch: "e-maile niezgodne",
         },
     },
 }
