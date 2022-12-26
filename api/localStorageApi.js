@@ -15,13 +15,21 @@ const getUsers = () => {
 const getCurrentUser = () => {
     if (window.localStorage.getItem("users")) {
         currentUser = JSON.parse(window.localStorage.getItem("currentUser"))
-        document.querySelector(".username").innerHTML = currentUser.login
-        loginButton.click()
+
+        if (currentUser) {
+            changeUsername(currentUser.login)
+            navigation.login()
+        }
     }
 }
 
-const setCurrenUser = (user) => {
+const setCurrentUser = (user) => {
     window.localStorage.setItem("currentUser", JSON.stringify(user))
+    currentUser = user
+}
+
+const deleteCurrentUser = () => {
+    window.localStorage.removeItem("currentUser")
 }
 
 const registerUser = (login, email, password) => {
@@ -33,12 +41,15 @@ const registerUser = (login, email, password) => {
         password: password,
     }
 
-    setCurrenUser(newUser)
+    setCurrentUser(newUser)
 
     window.localStorage.setItem(
         "users",
         JSON.stringify(new Array(newUser, ...users))
     )
+
+    changeUsername(newUser.login)
+    navigation.login()
 }
 
 initUserApi = () => {

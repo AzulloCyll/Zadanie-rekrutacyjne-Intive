@@ -51,7 +51,3 @@ const dictionary = {
         },
     },
 }
-
-// //setting language from html.lang attr
-// const language = document.documentElement.lang
-// const lang = dictionary[language]

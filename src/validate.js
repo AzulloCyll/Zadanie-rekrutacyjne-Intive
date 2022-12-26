@@ -1,7 +1,3 @@
-const loginForm = document.getElementById("register")
-const registerButton = document.querySelector(".register-btn")
-const errors = document.getElementsByClassName("errors")
-
 const validateName = (input) => {
     const regex = new RegExp("^.{6,16}$") //all chars 6-16
     return regex.test(input.value)
@@ -58,11 +54,14 @@ const showErrors = (...inputs) => {
 
 const validate = () => {
     // checking fields of form
-    const nameStatus = validateName(loginForm.name2)
-    const emailStatus = validateEmail(loginForm.email)
-    const email2Status = validateEmail(loginForm.email2)
-    const emailCompareStatus = inputCompare(loginForm.email, loginForm.email2)
-    const passwordStatus = validatePassword(loginForm.passwd2)
+    const nameStatus = validateName(registerForm.name2)
+    const emailStatus = validateEmail(registerForm.email)
+    const email2Status = validateEmail(registerForm.email2)
+    const emailCompareStatus = inputCompare(
+        registerForm.email,
+        registerForm.email2
+    )
+    const passwordStatus = validatePassword(registerForm.passwd2)
 
     showErrors(
         nameStatus,
@@ -83,8 +82,3 @@ const validate = () => {
         return true
     } else return false
 }
-
-registerButton.addEventListener("click", () => {
-    const validationStatus = validate()
-    console.log(validationStatus)
-})

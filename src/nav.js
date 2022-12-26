@@ -1,16 +1,10 @@
-const nav = document.querySelectorAll("body > header > nav > ul > li")
-const mainPages = document.querySelectorAll("main > div")
-const loginButton = document.querySelector("button.login-btn")
-const logoffButton = document.querySelector(
-    "body > header > nav > ul > li:last-child > span.button"
-)
-
 class Navigate {
-    constructor(nav, pages, loginButtom, logoffButton) {
+    constructor(nav, pages, loginButtom, logoffButton, registerButton) {
         this.nav = nav
         this.pages = pages
         this.loginButton = loginButtom
         this.logoffButton = logoffButton
+        this.registerButton = registerButton
     }
 
     unsetHidden = (element) => {
@@ -28,7 +22,6 @@ class Navigate {
     }
 
     showAll = (elements) => {
-        console.log(elements)
         for (let elem of elements) {
             elem.classList.remove("hidden")
         }
@@ -60,6 +53,8 @@ class Navigate {
         this.hideAll(this.pages)
         this.unsetHidden(this.nav[2])
         this.unsetHidden(this.pages[3])
+
+        generateDataArticles(main)
     }
 
     initNavigation = () => {
@@ -73,14 +68,32 @@ class Navigate {
 
         this.logoffButton.addEventListener("click", () => {
             this.logoff()
+            deleteCurrentUser()
         })
 
         this.loginButton.addEventListener("click", (e) => {
             e.preventDefault()
             this.login()
         })
+
+        this.registerButton.addEventListener("click", () => {
+            const validationStatus = validate()
+
+            if (validationStatus)
+                registerUser(
+                    registerForm.name2.value,
+                    registerForm.email.value,
+                    registerForm.passwd2.value
+                )
+        })
     }
 }
 
-const navigation = new Navigate(nav, mainPages, loginButton, logoffButton)
+const navigation = new Navigate(
+    nav,
+    mainPages,
+    loginButton,
+    logoffButton,
+    registerButton
+)
 navigation.initNavigation()
