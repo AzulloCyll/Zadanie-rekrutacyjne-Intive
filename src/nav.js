@@ -17,58 +17,38 @@ class Navigate {
         this.registerModalCloseButton = registerModalCloseButton
     }
 
-    unsetHidden = (element) => {
-        element.classList.remove("hidden")
-    }
-
-    setHidden = (element) => {
-        element.classList.add("hidden")
-    }
-
-    hideAll = (elements) => {
-        for (let elem of elements) {
-            elem.classList.add("hidden")
-        }
-    }
-
-    showAll = (elements) => {
-        for (let elem of elements) {
-            elem.classList.remove("hidden")
-        }
-    }
-
     gotoLogin = () => {
-        this.hideAll(this.pages)
-        this.setHidden(this.nav[0])
-        this.unsetHidden(this.nav[1])
-        this.unsetHidden(this.pages[1])
+        hideAll(this.pages)
+        hide(this.nav[0])
+        show(this.nav[1])
+        show(this.pages[1])
     }
 
     gotoRegister = () => {
-        this.hideAll(this.pages)
-        this.setHidden(this.nav[1])
-        this.unsetHidden(this.nav[0])
-        this.unsetHidden(this.pages[2])
+        hideAll(this.pages)
+        hide(this.nav[1])
+        show(this.nav[0])
+        show(this.pages[2])
     }
 
     logoff = () => {
-        this.hideAll(this.pages)
-        this.showAll(this.nav)
-        this.setHidden(this.nav[2])
-        this.unsetHidden(this.pages[0])
+        hideAll(this.pages)
+        showAll(this.nav)
+        hide(this.nav[2])
+        show(this.pages[0])
     }
 
     login = () => {
-        this.hideAll(this.nav)
-        this.hideAll(this.pages)
-        this.unsetHidden(this.nav[2])
-        this.unsetHidden(this.pages[3])
+        hideAll(this.nav)
+        hideAll(this.pages)
+        show(this.nav[2])
+        show(this.pages[3])
 
         generateDataArticles(main)
     }
 
     closeModal = (element) => {
-        this.setHidden(element)
+        hide(element)
     }
 
     initNavigation = () => {
@@ -87,7 +67,8 @@ class Navigate {
 
         this.loginButton.addEventListener("click", (e) => {
             e.preventDefault()
-            this.login()
+
+            loginUser(loginForm.name.value, loginForm.passwd.value)
         })
 
         this.registerButton.addEventListener("click", () => {

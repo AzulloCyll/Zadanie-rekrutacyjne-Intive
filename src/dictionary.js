@@ -27,6 +27,8 @@ const dictionary = {
             errorPasswordToShort: "min. 6 characters",
             errorUserExists: "User with that name exists. Change user name.",
             errorEmailExists: "Only one account per e-mail allowed.",
+            errorUserNotExists: "There is no users with that name.",
+            errorWrongPassword: "Wrong password.",
         },
     },
 
@@ -46,7 +48,7 @@ const dictionary = {
         },
         text: {
             loginH1: "Logowanie",
-            unloggedH1: "Witaj na stronie",
+            unloggedH1: "Witaj na stronie!",
             unloggedP: "Zaloguj sie lub zarejestruj",
             registerH1: "Rejestracja",
             language: "Język:",
@@ -59,6 +61,8 @@ const dictionary = {
             errorUserExists:
                 "Podany użytkownik jest już zarejestrowany. Podaj inną nazwę uzytkownika.",
             errorEmailExists: "Na jeden adres można założyc tylko jedno konto.",
+            errorUserNotExists: "Nie ma takiego użytkownika.",
+            errorWrongPassword: "Nieprawidłowe hasło.",
         },
     },
 }

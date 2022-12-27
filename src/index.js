@@ -12,3 +12,5 @@ const navigation = new Navigate(
 navigation.initNavigation()
 initLanguageChanger()
 initUserApi()
+
+console.log(currentUser)

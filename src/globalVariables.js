@@ -7,6 +7,7 @@ const mainPages = document.querySelectorAll("main > div")
 //forms
 const registerForm = document.getElementById("register")
 const registerButton = document.querySelector(".register-btn")
+const loginForm = document.getElementById("login")
 const loginButton = document.querySelector("button.login-btn")
 const logoffButton = document.querySelector("span.button")
 const errors = document.getElementsByClassName("errors")

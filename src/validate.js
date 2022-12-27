@@ -27,28 +27,26 @@ const inputCompare = (input1, input2) => {
 }
 
 const showErrors = (...inputs) => {
-    for (error of errors) {
-        navigation.setHidden(error)
-    }
+    hideAll(errors)
 
     if (!inputs[0]) {
-        navigation.unsetHidden(errors[0])
+        show(errors[0])
     }
 
     if (!inputs[1]) {
-        navigation.unsetHidden(errors[1])
+        show(errors[1])
     }
 
     if (!inputs[2]) {
-        navigation.unsetHidden(errors[3])
+        show(errors[3])
     }
 
     if (!inputs[3]) {
-        navigation.unsetHidden(errors[2])
-        navigation.unsetHidden(errors[4])
+        show(errors[2])
+        show(errors[4])
     }
     if (!inputs[4]) {
-        navigation.unsetHidden(errors[5])
+        show(errors[5])
     }
 }
 

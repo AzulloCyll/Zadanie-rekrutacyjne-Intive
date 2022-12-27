@@ -59,6 +59,13 @@ const setLanguage = (lang) => {
     document.querySelector(
         "body > div.modal > div > div:nth-child(2)"
     ).innerHTML = dictionary[lang].errors.errorEmailExists
+
+    document.querySelector(
+        "body > div.modal > div > div:nth-child(3)"
+    ).innerHTML = dictionary[lang].errors.errorUserNotExists
+    document.querySelector(
+        "body > div.modal > div > div:nth-child(4)"
+    ).innerHTML = dictionary[lang].errors.errorWrongPassword
 }
 
 const initLanguageChanger = () => {
