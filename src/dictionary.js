@@ -7,7 +7,12 @@ const dictionary = {
             email: "e-mail:",
             email2: "Retype e-mail:",
         },
-        buttons: { login: "Login", logout: "Logout", register: "Register" },
+        buttons: {
+            login: "Login",
+            logout: "Logout",
+            register: "Register",
+            closeRegisterModal: "Back",
+        },
         text: {
             loginH1: "Login",
             unloggedH1: "Welcome on page",
@@ -20,6 +25,8 @@ const dictionary = {
             errorWrongEmail: "wrong e-mail",
             errorEmailNotMatch: "e-mail's not match",
             errorPasswordToShort: "min. 6 characters",
+            errorUserExists: "User with that name exists. Change user name.",
+            errorEmailExists: "Only one account per e-mail allowed.",
         },
     },
 
@@ -35,6 +42,7 @@ const dictionary = {
             login: "Zaloguj",
             logout: "Wyloguj",
             register: "Rejestracja",
+            closeRegisterModal: "Powrót",
         },
         text: {
             loginH1: "Logowanie",
@@ -48,6 +56,9 @@ const dictionary = {
             errorWrongEmail: "nieprawidłowy e-mail",
             errorEmailNotMatch: "e-maile niezgodne",
             errorPasswordToShort: "min. 6 znaków",
+            errorUserExists:
+                "Podany użytkownik jest już zarejestrowany. Podaj inną nazwę uzytkownika.",
+            errorEmailExists: "Na jeden adres można założyc tylko jedno konto.",
         },
     },
 }

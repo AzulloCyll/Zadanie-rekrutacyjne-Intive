@@ -3,6 +3,8 @@ const setLanguage = (lang) => {
     nav[0].innerHTML = dictionary[lang].nav.login
     nav[1].innerHTML = dictionary[lang].nav.register
     logoffButton.innerHTML = dictionary[lang].buttons.logout
+    registerModalCloseButton.innerHTML =
+        dictionary[lang].buttons.closeRegisterModal
     // starting screen
     document.querySelector(".unlogged h1").innerHTML =
         dictionary[lang].text.unloggedH1
@@ -50,6 +52,13 @@ const setLanguage = (lang) => {
     ).innerHTML = dictionary[lang].errors.errorEmailNotMatch
     document.querySelector("#register > div:nth-child(4) > div").innerHTML =
         dictionary[lang].errors.errorPasswordToShort
+    // modal errors
+    document.querySelector(
+        "body > div.modal > div > div:nth-child(1)"
+    ).innerHTML = dictionary[lang].errors.errorUserExists
+    document.querySelector(
+        "body > div.modal > div > div:nth-child(2)"
+    ).innerHTML = dictionary[lang].errors.errorEmailExists
 }
 
 const initLanguageChanger = () => {

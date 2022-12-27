@@ -1,10 +1,20 @@
 class Navigate {
-    constructor(nav, pages, loginButtom, logoffButton, registerButton) {
+    constructor(
+        nav,
+        pages,
+        loginButtom,
+        logoffButton,
+        registerButton,
+        modals,
+        registerModalCloseButton
+    ) {
         this.nav = nav
         this.pages = pages
         this.loginButton = loginButtom
         this.logoffButton = logoffButton
         this.registerButton = registerButton
+        this.modals = modals
+        this.registerModalCloseButton = registerModalCloseButton
     }
 
     unsetHidden = (element) => {
@@ -57,6 +67,10 @@ class Navigate {
         generateDataArticles(main)
     }
 
+    closeModal = (element) => {
+        this.setHidden(element)
+    }
+
     initNavigation = () => {
         this.nav[0].addEventListener("click", () => {
             this.gotoLogin()
@@ -86,14 +100,9 @@ class Navigate {
                     registerForm.passwd2.value
                 )
         })
+
+        this.registerModalCloseButton.addEventListener("click", () => {
+            this.closeModal(this.modals[0])
+        })
     }
 }
-
-const navigation = new Navigate(
-    nav,
-    mainPages,
-    loginButton,
-    logoffButton,
-    registerButton
-)
-navigation.initNavigation()
