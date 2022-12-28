@@ -1,7 +1,4 @@
-const changeUsername = (userName) => {
-    document.querySelector(".username").innerHTML = userName
-}
-
+// do zmiany
 const generateDataArticles = async (element) => {
     let transactionData = await fetchTransactions()
 

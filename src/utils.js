@@ -17,3 +17,7 @@ showAll = (elements) => {
         elem.classList.remove("hidden")
     }
 }
+
+const changeUsername = (userName) => {
+    document.querySelector(".username").innerHTML = userName
+}

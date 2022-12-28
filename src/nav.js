@@ -6,7 +6,7 @@ class Navigate {
         logoffButton,
         registerButton,
         modals,
-        registerModalCloseButton
+        modalCloseButton
     ) {
         this.nav = nav
         this.pages = pages
@@ -14,37 +14,35 @@ class Navigate {
         this.logoffButton = logoffButton
         this.registerButton = registerButton
         this.modals = modals
-        this.registerModalCloseButton = registerModalCloseButton
+        this.modalCloseButton = modalCloseButton
     }
 
-    gotoLogin = () => {
+    gotoLoginView = () => {
         hideAll(this.pages)
         hide(this.nav[0])
         show(this.nav[1])
         show(this.pages[1])
     }
 
-    gotoRegister = () => {
+    gotoRegisterView = () => {
         hideAll(this.pages)
         hide(this.nav[1])
         show(this.nav[0])
         show(this.pages[2])
     }
 
-    logoff = () => {
+    gotoUnloggedView = () => {
         hideAll(this.pages)
         showAll(this.nav)
         hide(this.nav[2])
         show(this.pages[0])
     }
 
-    login = () => {
+    gotoLoggedView = () => {
         hideAll(this.nav)
         hideAll(this.pages)
         show(this.nav[2])
         show(this.pages[3])
-
-        generateDataArticles(main)
     }
 
     closeModal = (element) => {
@@ -53,21 +51,21 @@ class Navigate {
 
     initNavigation = () => {
         this.nav[0].addEventListener("click", () => {
-            this.gotoLogin()
+            this.gotoLoginView()
         })
 
         this.nav[1].addEventListener("click", () => {
-            this.gotoRegister()
+            this.gotoRegisterView()
         })
 
         this.logoffButton.addEventListener("click", () => {
-            this.logoff()
+            getUsers()
+            this.gotoUnloggedView()
             deleteCurrentUser()
         })
 
         this.loginButton.addEventListener("click", (e) => {
             e.preventDefault()
-
             loginUser(loginForm.name.value, loginForm.passwd.value)
         })
 
@@ -82,7 +80,7 @@ class Navigate {
                 )
         })
 
-        this.registerModalCloseButton.addEventListener("click", () => {
+        this.modalCloseButton.addEventListener("click", () => {
             this.closeModal(this.modals[0])
         })
     }

@@ -51,7 +51,7 @@ const showErrors = (...inputs) => {
 }
 
 const validate = () => {
-    // checking fields of form
+    // checking all fields of form
     const nameStatus = validateName(registerForm.name2)
     const emailStatus = validateEmail(registerForm.email)
     const email2Status = validateEmail(registerForm.email2)
@@ -69,7 +69,7 @@ const validate = () => {
         passwordStatus
     )
 
-    // over validation status
+    // set validation status
     if (
         nameStatus &&
         emailStatus &&

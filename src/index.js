@@ -6,7 +6,7 @@ const navigation = new Navigate(
     logoffButton,
     registerButton,
     modals,
-    registerModalCloseButton
+    modalCloseButton
 )
 
 navigation.initNavigation()

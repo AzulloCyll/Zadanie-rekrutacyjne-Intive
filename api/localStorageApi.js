@@ -56,7 +56,10 @@ const registerUser = (login, email, password) => {
         )
         changeUsername(newUser.login)
         setCurrentUser(newUser)
-        navigation.login()
+
+        navigation.gotoLoggedView()
+
+        generateDataArticles(main)
     } else {
         show(modals[0])
     }
@@ -97,8 +100,9 @@ const loginUser = (login, password) => {
 
     if (isUserExist && isPasswordCorrect) {
         hideAll(errors)
-        navigation.login()
+        navigation.gotoLoggedView()
         setCurrentUser(loggingUser)
+        changeUsername(loggingUser.login)
         generateDataArticles(main)
     }
 
@@ -120,8 +124,10 @@ initUserApi = () => {
     getCurrentUser()
 
     document.addEventListener("DOMContentLoaded", () => {
-        if (currentUser) {
-            navigation.login()
+        if (currentUser && currentUser.login !== "") {
+            navigation.gotoLoggedView()
+
+            generateDataArticles(main)
         }
     })
 }
