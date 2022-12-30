@@ -19,6 +19,7 @@ const dictionary = {
             unloggedP: "Login or register to move on",
             registerH1: "Register",
             language: "Language:",
+            loginP: "You can login by username or e-mail",
         },
         errors: {
             errorWrongName: "6-16 characters",
@@ -48,6 +49,7 @@ const dictionary = {
         },
         text: {
             loginH1: "Logowanie",
+            loginP: "Możesz logować się za pomocą nazwy użytkownika albo e-maila",
             unloggedH1: "Witaj na stronie!",
             unloggedP: "Zaloguj sie lub zarejestruj",
             registerH1: "Rejestracja",

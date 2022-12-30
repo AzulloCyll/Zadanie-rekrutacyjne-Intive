@@ -13,6 +13,7 @@ const setLanguage = (lang) => {
     // login screen
     document.querySelector(".login h1").innerHTML =
         dictionary[lang].text.loginH1
+    document.querySelector(".login p").innerHTML = dictionary[lang].text.loginP
     document.querySelector(".login label[for='name']").innerHTML =
         dictionary[lang].labels.login
     document.querySelector(".login label[for='passwd']").innerHTML =

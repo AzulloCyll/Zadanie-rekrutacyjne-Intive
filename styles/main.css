@@ -45,6 +45,16 @@ main .register {
     height: 95vh;
 }
 
+main .login h1 {
+    margin-bottom: 7px;
+}
+
+main .login p {
+    margin-bottom: 50px;
+    font-size: small;
+    text-align: center;
+}
+
 main .login form,
 main .register form {
     width: 100%;
