@@ -36,20 +36,18 @@ const registerUser = (login, email, password) => {
         password: password,
     }
 
+    hideAll(errors)
+
     const isUserExist = checkIfUserExist(newUser, users)
     const isEmailExists = checkIfEmailExists(newUser, users)
 
+    console.log(isUserExist, isEmailExists)
+
     if (!isUserExist && isEmailExists) {
-        hideAll(errors)
         show(errors[7])
     }
 
-    if (isUserExist && isEmailExists) {
-        hideAll(errors)
-        show(errors[6])
-    }
     if (!isUserExist && !isEmailExists) {
-        hideAll(errors)
         window.localStorage.setItem(
             "users",
             JSON.stringify(new Array(newUser, ...users))
@@ -58,9 +56,9 @@ const registerUser = (login, email, password) => {
         setCurrentUser(newUser)
 
         navigation.gotoLoggedView()
-
         generateDataArticles(main)
     } else {
+        show(errors[6])
         show(modals[0])
     }
 }
