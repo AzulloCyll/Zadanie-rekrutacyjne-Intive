@@ -13,7 +13,7 @@ const getUsers = () => {
 }
 
 const getCurrentUser = () => {
-    if (window.localStorage.getItem("users")) {
+    if (window.localStorage.getItem("currentUser")) {
         currentUser = JSON.parse(window.localStorage.getItem("currentUser"))
     }
 }
@@ -45,20 +45,17 @@ const registerUser = (login, email, password) => {
 
     if (isUserExist && !isEmailExists) {
         show(errors[6])
-
         show(modals[0])
     }
 
     if (!isUserExist && isEmailExists) {
         show(errors[7])
-
         show(modals[0])
     }
 
     if (isUserExist && isEmailExists) {
         show(errors[6])
         show(errors[7])
-
         show(modals[0])
     }
 
@@ -71,7 +68,7 @@ const registerUser = (login, email, password) => {
         setCurrentUser(newUser)
 
         navigation.gotoLoggedView()
-        generateDataArticles(main)
+        // generateDataArticles(main)
     }
 }
 
@@ -86,13 +83,18 @@ const checkIfEmailExists = (userToFind, users) => {
 }
 
 const checkIfPasswordCorrect = (userToFind, users) => {
-    let user = users.find((user) => userToFind.login === user.login)
+    let foundByUser = users.find((user) => userToFind.login === user.login)
+    let foundByEmail = users.find((user) => userToFind.login === user.email)
 
-    if (user) {
-        if (user.password === userToFind.password) {
-            return 1
-        } else return 0
+    if (foundByUser) {
+        if (foundByUser.password === userToFind.password) return 1
     }
+
+    if (foundByEmail) {
+        if (foundByEmail.password === userToFind.password) return 1
+    }
+
+    return 0
 }
 
 const loginUser = (login, password) => {
@@ -105,39 +107,68 @@ const loginUser = (login, password) => {
     const isUserExist = checkIfUserExist(loggingUser, users)
     const isEmailExist = checkIfEmailExists(loggingUser, users)
     const isPasswordCorrect = checkIfPasswordCorrect(loggingUser, users)
+    const isLoginEmail = validateEmail(login)
 
-    console.log(isUserExist, isEmailExist)
+    // console.log(
+    //     "isUserExist:",
+    //     isUserExist,
+    //     "isEmailExist:",
+    //     isEmailExist,
+    //     "isPasswordCorrect:",
+    //     isPasswordCorrect,
+    //     "email:",
+    //     isLoginEmail
+    // )
 
-    if ((isUserExist || isEmailExist) && isPasswordCorrect) {
-        hideAll(errors)
-        navigation.gotoLoggedView()
-        setCurrentUser(loggingUser)
-        changeUsername(loggingUser.login)
-        generateDataArticles(main)
-    }
+    if (!isLoginEmail) {
+        if (isUserExist && isPasswordCorrect) {
+            hideAll(errors)
+            navigation.gotoLoggedView()
+            setCurrentUser(loggingUser)
+            changeUsername(loggingUser.login)
+            // generateDataArticles(main)
+        }
 
-    if (isUserExist && !isPasswordCorrect) {
-        hideAll(errors)
-        show(errors[9])
-        show(modals[0])
-    }
+        if (!isUserExist && !isPasswordCorrect) {
+            hideAll(errors)
+            show(errors[8])
+            show(modals[0])
+        }
 
-    if (!isUserExist) {
-        hideAll(errors)
-        show(errors[8])
-        show(modals[0])
+        if (isUserExist && !isPasswordCorrect) {
+            hideAll(errors)
+            show(errors[9])
+            show(modals[0])
+        }
+    } else {
+        if (isEmailExist && isPasswordCorrect) {
+            // get to other function
+            hideAll(errors)
+            navigation.gotoLoggedView()
+            setCurrentUser(loggingUser)
+            changeUsername(loggingUser.login)
+            // generateDataArticles(main)
+        } else if (!isEmailExist) {
+            ///// tutaj <------------------------------------------------------
+            console.log("pokazac")
+        } else {
+            hideAll(errors)
+            show(errors[9])
+            show(modals[0])
+        }
     }
 }
 
 initUserApi = () => {
     getUsers()
     getCurrentUser()
+    changeUsername(currentUser.login)
 
     document.addEventListener("DOMContentLoaded", () => {
         if (currentUser && currentUser.login !== "") {
             navigation.gotoLoggedView()
 
-            generateDataArticles(main)
+            // generateDataArticles(main)
         }
     })
 }
