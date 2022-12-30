@@ -43,8 +43,23 @@ const registerUser = (login, email, password) => {
 
     console.log(isUserExist, isEmailExists)
 
+    if (isUserExist && !isEmailExists) {
+        show(errors[6])
+
+        show(modals[0])
+    }
+
     if (!isUserExist && isEmailExists) {
         show(errors[7])
+
+        show(modals[0])
+    }
+
+    if (isUserExist && isEmailExists) {
+        show(errors[6])
+        show(errors[7])
+
+        show(modals[0])
     }
 
     if (!isUserExist && !isEmailExists) {
@@ -57,14 +72,16 @@ const registerUser = (login, email, password) => {
 
         navigation.gotoLoggedView()
         generateDataArticles(main)
-    } else {
-        show(errors[6])
-        show(modals[0])
     }
 }
 
 const checkIfUserExist = (userToFind, users) => {
     let user = users.find((user) => userToFind.login === user.login)
+    return user ? 1 : 0
+}
+
+const checkIfEmailExists = (userToFind, users) => {
+    let user = users.find((user) => userToFind.email === user.email)
     return user ? 1 : 0
 }
 
@@ -78,25 +95,20 @@ const checkIfPasswordCorrect = (userToFind, users) => {
     }
 }
 
-const checkIfEmailExists = (emailToFind, users) => {
-    for (let user of users) {
-        if (emailToFind.email === user.email) {
-            show(errors[7])
-            return 1
-        } else return 0
-    }
-}
-
 const loginUser = (login, password) => {
     const loggingUser = {
         login: login,
+        email: login,
         password: password,
     }
 
     const isUserExist = checkIfUserExist(loggingUser, users)
+    const isEmailExist = checkIfEmailExists(loggingUser, users)
     const isPasswordCorrect = checkIfPasswordCorrect(loggingUser, users)
 
-    if (isUserExist && isPasswordCorrect) {
+    console.log(isUserExist, isEmailExist)
+
+    if ((isUserExist || isEmailExist) && isPasswordCorrect) {
         hideAll(errors)
         navigation.gotoLoggedView()
         setCurrentUser(loggingUser)
