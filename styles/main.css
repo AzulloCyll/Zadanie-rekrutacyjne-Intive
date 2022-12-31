@@ -103,9 +103,7 @@ main .register form .line input {
     width: 60%;
 }
 
-main .login form .line button.login-btn,
-main .register form .line button.register-btn,
-.closeModal-btn {
+.button {
     padding: 10px 20px;
     width: auto;
     text-transform: uppercase;
@@ -121,9 +119,7 @@ main .register form .line button.register-btn,
     transition: all 0.3s;
 }
 
-main .login form .line button.login-btn:hover,
-main .register form .line button.register-btn:hover,
-.closeModal-btn:hover {
+.button:hover {
     background-color: #005bd2;
 }
 
@@ -165,22 +161,5 @@ main .register form .line button.register-btn:hover,
     main .login form,
     main .register form {
         width: 60%;
-    }
-
-    .modal {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .modal .info {
-        position: relative;
-        width: 70vh;
-        height: 70vh;
-    }
-
-    .modal .info .errors {
-        font-size: 24px;
     }
 }

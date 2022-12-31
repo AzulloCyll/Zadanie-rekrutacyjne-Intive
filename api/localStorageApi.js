@@ -142,7 +142,7 @@ const loginUser = (login, password) => {
         }
     } else {
         if (isEmailExist && isPasswordCorrect) {
-            // get to other function
+            // get this to other function
             hideAll(errors)
             navigation.gotoLoggedView()
             setCurrentUser(loggingUser)
@@ -150,6 +150,7 @@ const loginUser = (login, password) => {
             // generateDataArticles(main)
         } else if (!isEmailExist) {
             ///// tutaj <------------------------------------------------------
+            show(modals[1])
             console.log("pokazac")
         } else {
             hideAll(errors)
@@ -168,7 +169,7 @@ initUserApi = () => {
         if (currentUser && currentUser.login !== "") {
             navigation.gotoLoggedView()
 
-            // generateDataArticles(main)
+            generateDataArticles(main)
         }
     })
 }

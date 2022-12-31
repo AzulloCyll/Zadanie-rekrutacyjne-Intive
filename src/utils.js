@@ -6,13 +6,13 @@ const hide = (element) => {
     element.classList.add("hidden")
 }
 
-hideAll = (elements) => {
+const hideAll = (elements) => {
     for (let elem of elements) {
         elem.classList.add("hidden")
     }
 }
 
-showAll = (elements) => {
+const showAll = (elements) => {
     for (let elem of elements) {
         elem.classList.remove("hidden")
     }

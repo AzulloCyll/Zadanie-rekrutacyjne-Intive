@@ -6,7 +6,9 @@ class Navigate {
         logoffButton,
         registerButton,
         modals,
-        modalCloseButton
+        modal0CloseButton,
+        modal1CloseButton,
+        modal1RegisterButton
     ) {
         this.nav = nav
         this.pages = pages
@@ -14,7 +16,9 @@ class Navigate {
         this.logoffButton = logoffButton
         this.registerButton = registerButton
         this.modals = modals
-        this.modalCloseButton = modalCloseButton
+        this.modal0CloseButton = modal0CloseButton
+        this.modal1CloseButton = modal1CloseButton
+        this.modal1RegisterButton = modal1RegisterButton
     }
 
     gotoLoginView = () => {
@@ -80,8 +84,18 @@ class Navigate {
                 )
         })
 
-        this.modalCloseButton.addEventListener("click", () => {
+        this.modal0CloseButton.addEventListener("click", () => {
             this.closeModal(this.modals[0])
+        })
+
+        this.modal1CloseButton.addEventListener("click", () => {
+            this.closeModal(this.modals[1])
+        })
+
+        this.modal1RegisterButton.addEventListener("click", () => {
+            this.closeModal(this.modals[1])
+            registerForm.email.value = loginForm.name.value
+            navigation.gotoRegisterView()
         })
     }
 }

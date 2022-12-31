@@ -15,3 +15,5 @@ const errors = document.getElementsByClassName("errors")
 //modals
 const modals = document.getElementsByClassName("modal")
 const registerModalCloseButton = document.querySelector(".closeModal-btn")
+const loginModalCloseButton = document.querySelector(".close2Modal-btn")
+const loginModalRegisterButton = document.querySelector(".register2-btn")
