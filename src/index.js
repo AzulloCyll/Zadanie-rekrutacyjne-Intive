@@ -12,6 +12,8 @@ const navigation = new Navigate(
     xButtons
 )
 
-navigation.initNavigation()
+const localStorageApi = new LocalStorageApi()
+
+navigation.init()
+localStorageApi.init()
 initLanguageChanger()
-initUserApi()

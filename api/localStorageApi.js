@@ -1,161 +1,168 @@
-let users = []
-
-let currentUser = {
-    login: "",
-    email: "",
-    password: "",
-}
-
-const getUsers = () => {
-    if (window.localStorage.getItem("users")) {
-        users = [...JSON.parse(window.localStorage.getItem("users"))]
-    }
-}
-
-const getCurrentUser = () => {
-    if (window.localStorage.getItem("currentUser")) {
-        currentUser = JSON.parse(window.localStorage.getItem("currentUser"))
-    }
-}
-
-const setCurrentUser = (user) => {
-    window.localStorage.setItem("currentUser", JSON.stringify(user))
-    currentUser = user
-}
-
-const deleteCurrentUser = () => {
-    window.localStorage.removeItem("currentUser")
-}
-
-const registerUser = (login, email, password) => {
-    getUsers()
-
-    const newUser = {
-        login: login,
-        email: email,
-        password: password,
+class LocalStorageApi {
+    constructor() {
+        this.currentUser = {
+            login: "",
+            email: "",
+            password: "",
+        }
+        this.users = []
     }
 
-    hideAll(errors)
-
-    const isUserExist = checkIfUserExist(newUser, users)
-    const isEmailExists = checkIfEmailExists(newUser, users)
-
-    console.log(isUserExist, isEmailExists)
-
-    if (isUserExist && !isEmailExists) {
-        show(errors[6])
-        show(modals[0])
+    getUsers = () => {
+        if (window.localStorage.getItem("users")) {
+            this.users = [...JSON.parse(window.localStorage.getItem("users"))]
+        }
     }
 
-    if (!isUserExist && isEmailExists) {
-        show(errors[7])
-        show(modals[0])
+    getCurrentUser = () => {
+        if (window.localStorage.getItem("currentUser")) {
+            this.currentUser = JSON.parse(
+                window.localStorage.getItem("currentUser")
+            )
+        }
     }
 
-    if (isUserExist && isEmailExists) {
-        show(errors[6])
-        show(errors[7])
-        show(modals[0])
+    setCurrentUser = (user) => {
+        window.localStorage.setItem("currentUser", JSON.stringify(user))
+        this.currentUser = user
     }
 
-    if (!isUserExist && !isEmailExists) {
-        window.localStorage.setItem(
-            "users",
-            JSON.stringify(new Array(newUser, ...users))
-        )
-        changeUsername(newUser.login)
-        setCurrentUser(newUser)
-
-        navigation.gotoLoggedView()
-        // generateDataArticles(main)
-    }
-}
-
-const checkIfUserExist = (userToFind, users) => {
-    let user = users.find((user) => userToFind.login === user.login)
-    return user ? 1 : 0
-}
-
-const checkIfEmailExists = (userToFind, users) => {
-    let user = users.find((user) => userToFind.email === user.email)
-    return user ? 1 : 0
-}
-
-const checkIfPasswordCorrect = (userToFind, users) => {
-    let foundByUser = users.find((user) => userToFind.login === user.login)
-    let foundByEmail = users.find((user) => userToFind.login === user.email)
-
-    if (foundByUser) {
-        if (foundByUser.password === userToFind.password) return 1
+    deleteCurrentUser = () => {
+        window.localStorage.removeItem("currentUser")
     }
 
-    if (foundByEmail) {
-        if (foundByEmail.password === userToFind.password) return 1
-    }
+    registerUser = (login, email, password) => {
+        this.getUsers()
 
-    return 0
-}
-
-const showData = (loggingUser) => {
-    hideAll(errors)
-    navigation.gotoLoggedView()
-    setCurrentUser(loggingUser)
-    changeUsername(loggingUser.login)
-    generateDataArticles(main)
-}
-
-const loginUser = (login, password) => {
-    const loggingUser = {
-        login: login,
-        email: login,
-        password: password,
-    }
-
-    const isUserExist = checkIfUserExist(loggingUser, users)
-    const isEmailExist = checkIfEmailExists(loggingUser, users)
-    const isPasswordCorrect = checkIfPasswordCorrect(loggingUser, users)
-    const isLoginEmail = validateEmail(login)
-
-    if (!isLoginEmail) {
-        if (isUserExist && isPasswordCorrect) {
-            showData(loggingUser)
+        const newUser = {
+            login: login,
+            email: email,
+            password: password,
         }
 
-        if (!isUserExist && !isPasswordCorrect) {
-            hideAll(errors)
-            show(errors[8])
+        hideAll(errors)
+
+        const isUserExist = this.checkIfUserExist(newUser, this.users)
+        const isEmailExists = this.checkIfEmailExists(newUser, this.users)
+
+        if (isUserExist && !isEmailExists) {
+            show(errors[6])
             show(modals[0])
         }
 
-        if (isUserExist && !isPasswordCorrect) {
-            hideAll(errors)
-            show(errors[9])
+        if (!isUserExist && isEmailExists) {
+            show(errors[7])
             show(modals[0])
         }
-    } else {
-        if (isEmailExist && isPasswordCorrect) {
-            showData(loggingUser)
-        } else if (!isEmailExist) {
-            show(modals[1])
-        } else {
-            hideAll(errors)
-            show(errors[9])
+
+        if (isUserExist && isEmailExists) {
+            show(errors[6])
+            show(errors[7])
             show(modals[0])
         }
-    }
-}
 
-initUserApi = () => {
-    getUsers()
-    getCurrentUser()
-    changeUsername(currentUser.login)
-
-    document.addEventListener("DOMContentLoaded", () => {
-        if (currentUser && currentUser.login !== "") {
+        if (!isUserExist && !isEmailExists) {
+            window.localStorage.setItem(
+                "users",
+                JSON.stringify(new Array(newUser, ...this.users))
+            )
+            changeUsername(newUser.login)
+            this.setCurrentUser(newUser)
             navigation.gotoLoggedView()
 
             generateDataArticles(main)
         }
-    })
+    }
+
+    checkIfUserExist = (userToFind, users) => {
+        let user = users.find((user) => userToFind.login === user.login)
+        return user ? 1 : 0
+    }
+
+    checkIfEmailExists = (userToFind, users) => {
+        let user = users.find((user) => userToFind.email === user.email)
+        return user ? 1 : 0
+    }
+
+    checkIfPasswordCorrect = (userToFind, users) => {
+        let foundByUser = users.find((user) => userToFind.login === user.login)
+        let foundByEmail = users.find((user) => userToFind.login === user.email)
+
+        if (foundByUser) {
+            if (foundByUser.password === userToFind.password) return 1
+        }
+
+        if (foundByEmail) {
+            if (foundByEmail.password === userToFind.password) return 1
+        }
+
+        return 0
+    }
+
+    showData = (loggingUser) => {
+        hideAll(errors)
+        navigation.gotoLoggedView()
+        this.setCurrentUser(loggingUser)
+        changeUsername(loggingUser.login)
+
+        generateDataArticles(main)
+    }
+
+    loginUser = (login, password) => {
+        const loggingUser = {
+            login: login,
+            email: login,
+            password: password,
+        }
+
+        const isUserExist = this.checkIfUserExist(loggingUser, this.users)
+        const isEmailExist = this.checkIfEmailExists(loggingUser, this.users)
+        const isPasswordCorrect = this.checkIfPasswordCorrect(
+            loggingUser,
+            this.users
+        )
+        const isLoginEmail = validateEmail(login)
+
+        if (!isLoginEmail) {
+            if (isUserExist && isPasswordCorrect) {
+                this.showData(loggingUser)
+            }
+
+            if (!isUserExist && !isPasswordCorrect) {
+                hideAll(errors)
+                show(errors[8])
+                show(modals[0])
+            }
+
+            if (isUserExist && !isPasswordCorrect) {
+                hideAll(errors)
+                show(errors[9])
+                show(modals[0])
+            }
+        } else {
+            if (isEmailExist && isPasswordCorrect) {
+                this.showData(loggingUser)
+            } else if (!isEmailExist) {
+                show(modals[1])
+            } else {
+                hideAll(errors)
+                show(errors[9])
+                show(modals[0])
+            }
+        }
+    }
+
+    init = () => {
+        this.getUsers()
+        this.getCurrentUser()
+        changeUsername(this.currentUser.login)
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (this.currentUser && this.currentUser.login !== "") {
+                navigation.gotoLoggedView()
+
+                generateDataArticles(main)
+            }
+        })
+    }
 }

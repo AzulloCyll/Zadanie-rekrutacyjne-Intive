@@ -55,7 +55,7 @@ class Navigate {
         hide(element)
     }
 
-    initNavigation = () => {
+    init = () => {
         this.nav[0].addEventListener("click", () => {
             this.gotoLoginView()
         })
@@ -65,21 +65,24 @@ class Navigate {
         })
 
         this.logoffButton.addEventListener("click", () => {
-            getUsers()
+            localStorageApi.getUsers()
+            localStorageApi.deleteCurrentUser()
             this.gotoUnloggedView()
-            deleteCurrentUser()
         })
 
         this.loginButton.addEventListener("click", (e) => {
             e.preventDefault()
-            loginUser(loginForm.name.value, loginForm.passwd.value)
+            localStorageApi.loginUser(
+                loginForm.name.value,
+                loginForm.passwd.value
+            )
         })
 
         this.registerButton.addEventListener("click", () => {
             const validationStatus = validate()
 
             if (validationStatus)
-                registerUser(
+                localStorageApi.registerUser(
                     registerForm.name2.value,
                     registerForm.email.value,
                     registerForm.passwd2.value
