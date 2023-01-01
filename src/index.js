@@ -8,7 +8,8 @@ const navigation = new Navigate(
     modals,
     registerModalCloseButton,
     loginModalCloseButton,
-    loginModalRegisterButton
+    loginModalRegisterButton,
+    xButtons
 )
 
 navigation.initNavigation()

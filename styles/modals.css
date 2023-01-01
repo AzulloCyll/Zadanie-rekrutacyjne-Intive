@@ -45,6 +45,35 @@
     margin-bottom: 50px;
 }
 
+.button.x-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    padding: 16px;
+}
+
+.button.x-button::after,
+.button.x-button::before {
+    content: "";
+    position: absolute;
+    right: 7px;
+    top: 15px;
+    width: 17px;
+    height: 2px;
+    background-color: white;
+}
+
+.button.x-button::after {
+    transform: rotate(45deg);
+}
+
+.button.x-button::before {
+    transform: rotate(-45deg);
+}
+.button.x-button::after {
+    transform: rotate(45deg);
+}
+
 @media screen and (min-width: 769px) {
     .modal.ad .info .buttons {
         flex-direction: row;
@@ -61,6 +90,11 @@
         position: relative;
         width: 70vh;
         height: 70vh;
+        border-radius: 0;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        border-radius: 15px;
     }
 
     .modal .info .errors {

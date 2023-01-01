@@ -97,6 +97,14 @@ const checkIfPasswordCorrect = (userToFind, users) => {
     return 0
 }
 
+const showData = (loggingUser) => {
+    hideAll(errors)
+    navigation.gotoLoggedView()
+    setCurrentUser(loggingUser)
+    changeUsername(loggingUser.login)
+    generateDataArticles(main)
+}
+
 const loginUser = (login, password) => {
     const loggingUser = {
         login: login,
@@ -109,24 +117,9 @@ const loginUser = (login, password) => {
     const isPasswordCorrect = checkIfPasswordCorrect(loggingUser, users)
     const isLoginEmail = validateEmail(login)
 
-    // console.log(
-    //     "isUserExist:",
-    //     isUserExist,
-    //     "isEmailExist:",
-    //     isEmailExist,
-    //     "isPasswordCorrect:",
-    //     isPasswordCorrect,
-    //     "email:",
-    //     isLoginEmail
-    // )
-
     if (!isLoginEmail) {
         if (isUserExist && isPasswordCorrect) {
-            hideAll(errors)
-            navigation.gotoLoggedView()
-            setCurrentUser(loggingUser)
-            changeUsername(loggingUser.login)
-            // generateDataArticles(main)
+            showData(loggingUser)
         }
 
         if (!isUserExist && !isPasswordCorrect) {
@@ -142,16 +135,9 @@ const loginUser = (login, password) => {
         }
     } else {
         if (isEmailExist && isPasswordCorrect) {
-            // get this to other function
-            hideAll(errors)
-            navigation.gotoLoggedView()
-            setCurrentUser(loggingUser)
-            changeUsername(loggingUser.login)
-            // generateDataArticles(main)
+            showData(loggingUser)
         } else if (!isEmailExist) {
-            ///// tutaj <------------------------------------------------------
             show(modals[1])
-            console.log("pokazac")
         } else {
             hideAll(errors)
             show(errors[9])
