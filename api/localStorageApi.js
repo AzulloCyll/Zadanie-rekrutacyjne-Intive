@@ -37,7 +37,7 @@ class LocalStorageApi {
         const newUser = {
             login: login,
             email: email,
-            password: password,
+            password: crypt(login, password),
         }
 
         hideAll(errors)
@@ -89,11 +89,19 @@ class LocalStorageApi {
         let foundByEmail = users.find((user) => userToFind.login === user.email)
 
         if (foundByUser) {
-            if (foundByUser.password === userToFind.password) return 1
+            if (
+                decrypt(foundByUser.login, foundByUser.password) ===
+                userToFind.password
+            )
+                return 1
         }
 
         if (foundByEmail) {
-            if (foundByEmail.password === userToFind.password) return 1
+            if (
+                decrypt(foundByEmail.login, foundByEmail.password) ===
+                userToFind.password
+            )
+                return 1
         }
 
         return 0
