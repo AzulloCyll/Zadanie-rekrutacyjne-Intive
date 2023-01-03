@@ -1,14 +1,15 @@
-// do zmiany
 const generateDataArticles = async (element) => {
-    let transactionData = await fetchTransactions()
+    let transactionData = await fetchData()
 
-    transactionData.sort((a, b) => {
+    const { transactions, transacationTypes } = transactionData
+
+    transactions.sort((a, b) => {
         return b.description.localeCompare(a.description)
     })
 
     element.innerHTML = ""
 
-    for (data of transactionData) {
+    for (data of transactions) {
         const div = document.createElement("div")
         const p = document.createElement("p")
         p.innerHTML = `Title = ${data.description}, Amount = ${data.amount}`
