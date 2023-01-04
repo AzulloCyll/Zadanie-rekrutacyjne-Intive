@@ -70,7 +70,7 @@ class LocalStorageApi {
             this.setCurrentUser(newUser)
             navigation.gotoLoggedView()
 
-            generateDataArticles(main)
+            generateDataArticles(loggedDownPage)
         }
     }
 
@@ -113,7 +113,7 @@ class LocalStorageApi {
         this.setCurrentUser(loggingUser)
         changeUsername(loggingUser.login)
 
-        generateDataArticles(main)
+        generateDataArticles(loggedDownPage)
     }
 
     loginUser = (login, password) => {
@@ -169,7 +169,7 @@ class LocalStorageApi {
             if (this.currentUser && this.currentUser.login !== "") {
                 navigation.gotoLoggedView()
 
-                generateDataArticles(main)
+                generateDataArticles(loggedDownPage)
             }
         })
     }

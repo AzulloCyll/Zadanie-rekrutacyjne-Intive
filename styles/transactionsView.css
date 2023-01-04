@@ -1,0 +1,46 @@
+.logged {
+    display: grid;
+    height: 95vh;
+    width: 100%;
+    grid-template-rows: 45vh 50vh;
+}
+
+.logged .upPage {
+    overflow: auto;
+    white-space: nowrap;
+    grid-row: 1 / 2;
+}
+
+.logged .upPage .graphContainer {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.logged .upPage .graphContainer .graph {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.logged .downPage {
+    display: inline-block;
+    background-color: yellow;
+    overflow: none;
+    grid-row: 2 / 3;
+}
+
+@media screen and (min-width: 769px) {
+    .logged .upPage {
+        overflow: hidden;
+    }
+
+    .logged .upPage .graphContainer {
+        width: 50%;
+        overflow: hidden;
+        height: 100%;
+    }
+}

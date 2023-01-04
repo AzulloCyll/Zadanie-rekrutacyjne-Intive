@@ -1,5 +1,7 @@
 @import url("./nav.css");
 @import url("./modals.css");
+@import url("./transactionsView.css");
+@import url("./langchanger.css");
 
 * {
     margin: 0;
@@ -124,21 +126,6 @@ main .register form .line input {
 
 .hidden {
     display: none !important;
-}
-
-.lang {
-    position: absolute;
-    top: 40px;
-    left: 10px;
-    font-size: 12px;
-}
-
-.lang a {
-    cursor: pointer;
-}
-
-.lang a.active {
-    text-decoration: underline;
 }
 
 .errors {

@@ -1,0 +1,20 @@
+.lang {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    font-size: 12px;
+}
+
+.lang a {
+    cursor: pointer;
+}
+
+.lang a.active {
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 769px) {
+    .lang {
+        left: calc(100% / 2 - 50px);
+    }
+}

@@ -1,4 +1,6 @@
-const main = document.querySelector("main > div.logged")
+const loggedDownPage = document.querySelector(
+    "main > div.logged > div.downPage"
+)
 
 //nav
 const nav = document.querySelectorAll("body > header > nav > ul > li")
