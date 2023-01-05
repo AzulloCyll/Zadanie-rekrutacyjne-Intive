@@ -75,6 +75,7 @@ const dates = document.getElementsByClassName("date")
 const transactionTypeNames = document.getElementsByClassName("type")
 const balances = document.getElementsByClassName("balance")
 
+// RWD
 addEventListener("resize", () => {
     if (window.innerWidth > 769) {
         console.log("mobile")
