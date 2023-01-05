@@ -42,4 +42,8 @@
         overflow: hidden;
         height: 100%;
     }
+
+    .transaction .type {
+        display: inline-block;
+    }
 }
