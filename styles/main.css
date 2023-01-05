@@ -2,6 +2,7 @@
 @import url("./modals.css");
 @import url("./transactionsView.css");
 @import url("./langchanger.css");
+@import url("transaction.css");
 
 * {
     margin: 0;

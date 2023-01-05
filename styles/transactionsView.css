@@ -28,7 +28,6 @@
 
 .logged .downPage {
     display: inline-block;
-    background-color: yellow;
     overflow: none;
     grid-row: 2 / 3;
 }

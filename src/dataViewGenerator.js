@@ -3,18 +3,45 @@ const generateDataArticles = async (element) => {
 
     const { transactions, transacationTypes } = transactionData
 
-    transactions.sort((a, b) => {
-        return b.description.localeCompare(a.description)
-    })
+    // transactions.sort((a, b) => {
+    //     return b.description.localeCompare(a.description)
+    // })
+
+    const transactionsWithId = addId(transactions)
+    console.log(transactionsWithId)
 
     element.innerHTML = ""
 
-    for (data of transactions) {
+    for (transaction of transactions) {
         const div = document.createElement("div")
-        const p = document.createElement("p")
-        p.innerHTML = `Title = ${data.description}, Amount = ${data.amount}`
         div.classList.add("transaction")
-        div.append(p)
-        element.prepend(div)
+
+        const icon = document.createElement("i")
+        icon.classList.add("icon")
+        icon.innerHTML = transaction.type
+
+        const desc = document.createElement("span")
+        desc.classList.add("description")
+        desc.innerHTML = transaction.description
+
+        const amount = document.createElement("span")
+        amount.classList.add("amount")
+        amount.innerHTML = transaction.amount
+
+        div.append(icon, desc, amount)
+
+        element.append(div)
     }
+}
+
+const addId = (transactions) => {
+    const result = []
+    for (let transaction of transactions) {
+        let uniqueId = Math.floor(
+            Math.random() * Math.floor(Math.random() * Date.now())
+        )
+        transaction = { ...transaction, id: uniqueId }
+        result.push(transaction)
+    }
+    return result
 }
