@@ -71,12 +71,12 @@ const hideElements = (...elements) => {
     }
 }
 
-const dates = document.getElementsByClassName("date")
-const transactionTypeNames = document.getElementsByClassName("type")
-const balances = document.getElementsByClassName("balance")
-
 // RWD
 addEventListener("resize", () => {
+    const dates = document.getElementsByClassName("date")
+    const transactionTypeNames = document.getElementsByClassName("type")
+    const balances = document.getElementsByClassName("balance")
+
     if (window.innerWidth > 769) {
         console.log("mobile")
         showElements(dates, transactionTypeNames, balances)
