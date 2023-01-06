@@ -9,28 +9,29 @@ const generateDataArticles = async (element) => {
 
     const transactionsWithId = addId(transactions)
     console.log(transactionsWithId)
+    console.log(transacationTypes)
 
     element.innerHTML = ""
 
     //dopisać paski z datą na mobile
-    for (transaction of transactions) {
+    for (transaction of transactionsWithId) {
         const article = document.createElement("article")
         article.classList.add("transaction")
 
         const date = document.createElement("span")
-        date.classList.add("date", "hidden")
+        date.classList.add("date")
         date.innerHTML = transaction.date
 
-        const icon = document.createElement("i")
+        const icon = document.createElement("span")
         icon.classList.add("icon")
-        icon.innerHTML = transaction.type
+        icon.innerHTML = getIconByTransactionType(transaction.type)
 
         const desc = document.createElement("span")
         desc.classList.add("description")
         desc.innerHTML = transaction.description
 
         const transactionTypeName = document.createElement("span")
-        transactionTypeName.classList.add("type", "hidden")
+        transactionTypeName.classList.add("type")
         transactionTypeName.innerHTML = transaction.type
 
         const amount = document.createElement("span")
@@ -38,10 +39,11 @@ const generateDataArticles = async (element) => {
         amount.innerHTML = transaction.amount
 
         const balance = document.createElement("span")
-        balance.classList.add("balance", "hidden")
+        balance.classList.add("balance")
         balance.innerHTML = transaction.balance
 
         article.append(date, icon, desc, transactionTypeName, amount, balance)
+        article.id = `${transaction.id}`
 
         element.append(article)
     }
@@ -59,29 +61,22 @@ const addId = (transactions) => {
     return result
 }
 
-const showElements = (...elements) => {
-    for (let element of elements) {
-        showAll(element)
+const getIconByTransactionType = (transactionType) => {
+    switch (transactionType) {
+        case 1:
+            return '<i style="color: green;" class="fa-solid fa-right-to-bracket"></i>'
+            break
+
+        case 2:
+            return '<i style="color: red;" class="fa-solid fa-right-from-bracket"></i>'
+            break
+
+        case 3:
+            return '<i style="color: green;" class="fa-solid fa-right-to-bracket"></i>'
+            break
+
+        case 4:
+            return '<i style="color: red;" class="fa-solid fa-right-from-bracket"></i>'
+            break
     }
 }
-
-const hideElements = (...elements) => {
-    for (let element of elements) {
-        hideAll(element)
-    }
-}
-
-// RWD
-addEventListener("resize", () => {
-    const dates = document.getElementsByClassName("date")
-    const transactionTypeNames = document.getElementsByClassName("type")
-    const balances = document.getElementsByClassName("balance")
-
-    if (window.innerWidth > 769) {
-        console.log("mobile")
-        showElements(dates, transactionTypeNames, balances)
-    } else {
-        console.log("desktop")
-        hideElements(dates, transactionTypeNames, balances)
-    }
-})

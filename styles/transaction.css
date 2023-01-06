@@ -1,6 +1,36 @@
 .transaction {
-    border: 1px solid grey;
-    margin: 5px;
-    padding: 5px;
+    display: flex;
+    margin: 10px 10px;
+    padding: 10px;
     border-radius: 5px;
+    background-color: white;
+}
+
+.logged .downPage .date,
+.logged .downPage .balance,
+.logged .downPage .type {
+    display: none;
+}
+
+.logged .downPage .transaction .icon {
+    margin-right: 5px;
+}
+
+.logged .downPage .transaction .description {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 350px;
+}
+
+.logged .downPage .transaction .amount {
+    margin-left: auto;
+}
+
+@media screen and (min-width: 769px) {
+    .logged .downPage .date,
+    .logged .downPage .balance,
+    .logged .downPage .type {
+        display: inline-block;
+    }
 }

@@ -28,7 +28,7 @@
 
 .logged .downPage {
     display: inline-block;
-    overflow: none;
+    overflow: auto;
     grid-row: 2 / 3;
 }
 
@@ -41,9 +41,5 @@
         width: 50%;
         overflow: hidden;
         height: 100%;
-    }
-
-    .transaction .type {
-        display: inline-block;
     }
 }
