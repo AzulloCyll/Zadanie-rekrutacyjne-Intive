@@ -1,11 +1,9 @@
+const articles = document.getElementsByTagName("article")
+
 const generateDataArticles = async (element) => {
     let transactionData = await fetchData()
 
     const { transactions, transacationTypes } = transactionData
-
-    // transactions.sort((a, b) => {
-    //     return b.description.localeCompare(a.description)
-    // })
 
     const transactionsWithId = addId(transactions)
     console.log(transactionsWithId)
@@ -46,6 +44,43 @@ const generateDataArticles = async (element) => {
         article.id = `${transaction.id}`
 
         element.append(article)
+    }
+
+    addEventListeners(articles)
+}
+
+const addEventListeners = (articles) => {
+    for (article of articles) {
+        article.addEventListener("click", (e) => {
+            console.log(e.currentTarget.id)
+            closeAllTransactions(articles)
+            openTransactionById(articles, e.currentTarget.id)
+        })
+    }
+}
+
+const openTransactionById = (articles, id) => {
+    for (let article of articles) {
+        if (article.id === id) {
+            article.classList.add("open")
+            const balance = article.getElementsByClassName("balance")[0]
+            const transactionType = article.getElementsByClassName("type")[0]
+
+            balance.style.display = "inline-block"
+            transactionType.style.display = "inline-block"
+        }
+    }
+}
+
+const closeAllTransactions = (articles) => {
+    for (let article of articles) {
+        article.classList.remove("open")
+
+        const balance = article.getElementsByClassName("balance")[0]
+        const transactionType = article.getElementsByClassName("type")[0]
+
+        balance.style.display = "none"
+        transactionType.style.display = "none"
     }
 }
 

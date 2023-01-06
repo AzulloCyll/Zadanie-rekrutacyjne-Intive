@@ -27,6 +27,10 @@
     margin-left: auto;
 }
 
+.logged .downPage .transaction.open {
+    height: 100px;
+}
+
 @media screen and (min-width: 769px) {
     .logged .downPage .date,
     .logged .downPage .balance,
