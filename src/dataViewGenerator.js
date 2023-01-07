@@ -14,7 +14,14 @@ const generateDataArticles = async (element) => {
 
     //dopisać paski z datą na mobile
 
+    const dateArray = []
+
     for (transaction of transactionsWithId) {
+        if (!dateArray.includes(transaction.date)) {
+            generateLineWithDate(transaction, element)
+            dateArray.push(transaction.date)
+        }
+
         const article = document.createElement("article")
         article.classList.add("transaction")
 
@@ -126,4 +133,19 @@ const getDescriptionByTransactionType = (
     transactionType
 ) => {
     return transacationTypes[transactionType]
+}
+
+const generateLineWithDate = (transaction, element) => {
+    const div = document.createElement("div")
+    div.classList.add("line")
+
+    const hr = document.createElement("hr")
+    hr.classList.add("hr")
+
+    const dateMobile = document.createElement("span")
+    dateMobile.classList.add("dateMobile")
+    dateMobile.innerHTML = transaction.date
+
+    div.append(hr, dateMobile)
+    element.append(div)
 }

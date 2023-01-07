@@ -48,6 +48,31 @@
     height: 60px;
 }
 
+.logged .downPage .line {
+    margin-top: 30px;
+}
+
+.logged .downPage .line .hr {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+    margin: 11px;
+}
+
+.logged .downPage .line {
+    position: relative;
+}
+
+.logged .downPage .line .dateMobile {
+    position: absolute;
+    top: 0px;
+    background-color: rgb(223, 239, 255);
+    font-size: 12px;
+    top: -9px;
+    left: 38px;
+    padding: 0px 5px;
+}
+
 @media screen and (min-width: 769px) {
     .logged .downPage .transaction {
         height: 60px;
@@ -65,5 +90,9 @@
 
     .logged .downPage .transaction .type {
         left: 125px;
+    }
+
+    .logged .downPage .line {
+        display: none;
     }
 }
