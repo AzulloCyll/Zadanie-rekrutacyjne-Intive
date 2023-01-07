@@ -1,4 +1,3 @@
-//selector for main page
 const navigation = new Navigate(
     nav,
     mainPages,
