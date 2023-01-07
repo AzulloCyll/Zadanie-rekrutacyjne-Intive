@@ -49,9 +49,21 @@
 }
 
 @media screen and (min-width: 769px) {
+    .logged .downPage .transaction {
+        height: 60px;
+    }
+
     .logged .downPage .date,
     .logged .downPage .balance,
     .logged .downPage .type {
-        display: inline-block;
+        display: inline-block !important;
+    }
+
+    .logged .downPage .date {
+        margin-right: 10px;
+    }
+
+    .logged .downPage .transaction .type {
+        left: 125px;
     }
 }
