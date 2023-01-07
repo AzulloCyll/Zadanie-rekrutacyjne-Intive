@@ -9,9 +9,11 @@ const generateDataArticles = async (element) => {
     console.log(transactionsWithId)
     console.log(transacationTypes)
 
-    element.innerHTML = ""
+    element.innerHTML =
+        "<p style='text-align: center; margin: 10px'>Historia transakcji</p>"
 
     //dopisać paski z datą na mobile
+
     for (transaction of transactionsWithId) {
         const article = document.createElement("article")
         article.classList.add("transaction")
@@ -30,7 +32,10 @@ const generateDataArticles = async (element) => {
 
         const transactionTypeName = document.createElement("span")
         transactionTypeName.classList.add("type")
-        transactionTypeName.innerHTML = transaction.type
+        transactionTypeName.innerHTML = getDescriptionByTransactionType(
+            transacationTypes,
+            transaction.type
+        )
 
         const amount = document.createElement("span")
         amount.classList.add("amount")
@@ -38,7 +43,7 @@ const generateDataArticles = async (element) => {
 
         const balance = document.createElement("span")
         balance.classList.add("balance")
-        balance.innerHTML = transaction.balance
+        balance.innerHTML = `<span>Saldo: </span>${transaction.balance}`
 
         article.append(date, icon, desc, transactionTypeName, amount, balance)
         article.id = `${transaction.id}`
@@ -114,4 +119,11 @@ const getIconByTransactionType = (transactionType) => {
             return '<i style="color: red;" class="fa-solid fa-right-from-bracket"></i>'
             break
     }
+}
+
+const getDescriptionByTransactionType = (
+    transacationTypes,
+    transactionType
+) => {
+    return transacationTypes[transactionType]
 }

@@ -1,9 +1,12 @@
 .transaction {
+    position: relative;
     display: flex;
     margin: 10px 10px;
     padding: 10px;
     border-radius: 5px;
     background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+        rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .logged .downPage .date,
@@ -27,8 +30,22 @@
     margin-left: auto;
 }
 
+.logged .downPage .transaction .type {
+    position: absolute;
+    top: 35px;
+    left: 32px;
+    font-size: 12px;
+}
+
+.logged .downPage .transaction .balance {
+    position: absolute;
+    top: 35px;
+    font-size: 12px;
+    right: 11px;
+}
+
 .logged .downPage .transaction.open {
-    height: 100px;
+    height: 60px;
 }
 
 @media screen and (min-width: 769px) {
