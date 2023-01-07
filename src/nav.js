@@ -2,7 +2,7 @@ class Navigate {
     constructor(
         nav,
         pages,
-        loginButtom,
+        loginButton,
         logoffButton,
         registerButton,
         modals,
@@ -13,7 +13,7 @@ class Navigate {
     ) {
         this.nav = nav
         this.pages = pages
-        this.loginButton = loginButtom
+        this.loginButton = loginButton
         this.logoffButton = logoffButton
         this.registerButton = registerButton
         this.modals = modals
