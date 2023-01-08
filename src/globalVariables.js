@@ -1,5 +1,5 @@
 const loggedDownPage = document.querySelector(
-    "main > div.logged > div.downPage"
+    "main > div.logged > div.downPage > div.data"
 )
 
 //nav
@@ -11,7 +11,7 @@ const registerForm = document.getElementById("register")
 const registerButton = document.querySelector(".register-btn")
 const loginForm = document.getElementById("login")
 const loginButton = document.querySelector("button.login-btn")
-const logoffButton = document.querySelector("span.button")
+const logoffButton = document.querySelector("button.button-small")
 const errors = document.getElementsByClassName("errors")
 
 //modals

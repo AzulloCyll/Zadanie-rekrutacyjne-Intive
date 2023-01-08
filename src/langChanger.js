@@ -6,11 +6,13 @@ const setLanguage = (lang) => {
     registerModalCloseButton.innerHTML = dictionary[lang].buttons.back
     loginModalCloseButton.innerHTML = dictionary[lang].buttons.back
     loginModalRegisterButton.innerHTML = dictionary[lang].buttons.register
+
     // starting screen
     document.querySelector(".unlogged h1").innerHTML =
         dictionary[lang].text.unloggedH1
     document.querySelector(".unlogged p").innerHTML =
         dictionary[lang].text.unloggedP
+
     // login screen
     document.querySelector(".login h1").innerHTML =
         dictionary[lang].text.loginH1
@@ -21,6 +23,7 @@ const setLanguage = (lang) => {
         dictionary[lang].labels.passwd
     document.querySelector(".login-btn").innerHTML =
         dictionary[lang].buttons.login
+
     //register screen
     document.querySelector(".register H1").innerHTML =
         dictionary[lang].text.registerH1
@@ -34,9 +37,11 @@ const setLanguage = (lang) => {
         dictionary[lang].labels.email2
     document.querySelector(".register-btn").innerHTML =
         dictionary[lang].buttons.register
+
     // language changer
     document.querySelector(".lang span").innerHTML =
         dictionary[lang].text.language
+
     // errors
     document.querySelector("#register > div:nth-child(1) > div").innerHTML =
         dictionary[lang].errors.errorWrongName
@@ -54,6 +59,7 @@ const setLanguage = (lang) => {
     ).innerHTML = dictionary[lang].errors.errorEmailNotMatch
     document.querySelector("#register > div:nth-child(4) > div").innerHTML =
         dictionary[lang].errors.errorPasswordToShort
+
     // modal errors
     document.querySelector(
         "body > div.modal > div > div:nth-child(1)"
@@ -67,8 +73,36 @@ const setLanguage = (lang) => {
     document.querySelector(
         "body > div.modal > div > div:nth-child(4)"
     ).innerHTML = dictionary[lang].errors.errorWrongPassword
+
     // information modal
     document.querySelector(".ad p").innerHTML = dictionary[lang].text.ad
+
+    // logged screen
+    const balances = document.querySelectorAll(".balance span")
+    for (let balance of balances) {
+        balance.innerHTML = dictionary[lang].text.balance
+    }
+
+    // transaction types
+    const types1 = document.querySelectorAll(".type1")
+    for (const type of types1) {
+        type.innerHTML = dictionary[lang].transactionTypes[1]
+    }
+
+    const types2 = document.querySelectorAll(".type2")
+    for (const type of types2) {
+        type.innerHTML = dictionary[lang].transactionTypes[2]
+    }
+
+    const types3 = document.querySelectorAll(".type3")
+    for (const type of types3) {
+        type.innerHTML = dictionary[lang].transactionTypes[3]
+    }
+
+    const types4 = document.querySelectorAll(".type4")
+    for (const type of types4) {
+        type.innerHTML = dictionary[lang].transactionTypes[4]
+    }
 }
 
 const initLanguageChanger = () => {

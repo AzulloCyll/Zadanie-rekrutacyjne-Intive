@@ -9,8 +9,7 @@ const generateDataArticles = async (element) => {
     console.log(transactionsWithId)
     console.log(transacationTypes)
 
-    element.innerHTML =
-        "<p style='text-align: center; margin: 10px'>Historia transakcji</p>"
+    element.innerHTML = ""
 
     //dopisać paski z datą na mobile
 
@@ -38,7 +37,7 @@ const generateDataArticles = async (element) => {
         desc.innerHTML = transaction.description
 
         const transactionTypeName = document.createElement("span")
-        transactionTypeName.classList.add("type")
+        transactionTypeName.classList.add("type", `type${transaction.type}`)
         transactionTypeName.innerHTML = getDescriptionByTransactionType(
             transacationTypes,
             transaction.type

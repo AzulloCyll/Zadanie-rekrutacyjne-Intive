@@ -28,19 +28,20 @@ nav ul li:last-child span:first-child {
     cursor: auto;
 }
 
-nav ul .button {
+.button-small {
     transition: all 0.3s;
-    margin-left: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border: 0;
     border-radius: 500px;
-    padding: 3px 12px;
+    padding: 5px 12px;
     background-color: #0049a8;
     font-size: 0.8em;
     text-transform: uppercase;
     text-shadow: 1px 1px 2px black;
     color: white;
+    cursor: pointer;
 }
 
-nav ul .button:hover {
+.button-small:hover {
     background-color: #005bd2;
 }

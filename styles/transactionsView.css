@@ -32,6 +32,17 @@
     grid-row: 2 / 3;
 }
 
+.downPage p {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.downPage #search {
+    padding: 4px 10px;
+    border: 0;
+    border-radius: 500px;
+}
+
 @media screen and (min-width: 769px) {
     .logged .upPage {
         overflow: hidden;

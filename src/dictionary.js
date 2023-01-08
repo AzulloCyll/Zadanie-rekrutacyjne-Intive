@@ -21,6 +21,7 @@ const dictionary = {
             language: "Language:",
             loginP: "You can login by username or e-mail",
             ad: "We can't find your e-mail in our database.<br />Would you like to register?",
+            balance: "Balance: ",
         },
         errors: {
             errorWrongName: "6-16 characters",
@@ -31,6 +32,12 @@ const dictionary = {
             errorEmailExists: "Only one account per e-mail allowed.",
             errorUserNotExists: "There is no users with that name.",
             errorWrongPassword: "Wrong password.",
+        },
+        transactionTypes: {
+            1: "Income - other",
+            2: "Outcome - shopping",
+            3: "Income - salary",
+            4: "Outcome - other",
         },
     },
 
@@ -56,6 +63,7 @@ const dictionary = {
             registerH1: "Rejestracja",
             language: "Język:",
             ad: "Adresu e-mail, ktory podałeś nie ma w naszej bazie.<br />Czy chcesz się zarejestrować?",
+            balance: "Saldo: ",
         },
         errors: {
             errorWrongName: "6-16 znaków",
@@ -67,6 +75,12 @@ const dictionary = {
             errorEmailExists: "Na jeden adres można założyc tylko jedno konto.",
             errorUserNotExists: "Nie ma takiego użytkownika.",
             errorWrongPassword: "Nieprawidłowe hasło.",
+        },
+        transactionTypes: {
+            1: "Wpływy - inne",
+            2: "Wydatki - zakupy",
+            3: "Wpływy - wynagrodzenie",
+            4: "Wydatki - inne",
         },
     },
 }
