@@ -37,6 +37,15 @@
     margin-top: 70px;
 }
 
+.downPage p.not-found {
+    margin-top: 50px;
+}
+
+.downPage p.marginless {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .downPage #search {
     padding: 4px 10px;
     border: 0;

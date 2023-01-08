@@ -83,6 +83,8 @@ const setLanguage = (lang) => {
         balance.innerHTML = dictionary[lang].text.balance
     }
 
+    document.querySelector(".history").innerHTML = dictionary[lang].text.history
+
     // transaction types
     const types1 = document.querySelectorAll(".type1")
     for (const type of types1) {
@@ -105,26 +107,38 @@ const setLanguage = (lang) => {
     }
 
     //after search
-    document.querySelector("p.not-found span.first").innerHTML =
-        dictionary[lang].text.notFoundFirst
-    document.querySelector("p.not-found span.second").innerHTML =
-        dictionary[lang].text.notFoundSecond
+    const first = document.querySelector("p.not-found span.first")
+    if (first) {
+        first.innerHTML = dictionary[lang].text.notFoundFirst
+    }
+
+    const second = document.querySelector("p.not-found span.second")
+    if (second) {
+        second.innerHTML = dictionary[lang].text.notFoundSecond
+    }
+
+    const backButton = document.querySelector("p.not-found .back-btn")
+    if (backButton) {
+        backButton.innerHTML = dictionary[lang].buttons.back
+    }
 }
 
 const initLanguageChanger = () => {
-    const langNav = document.querySelectorAll(".lang > a")
-    const PL = langNav[0]
-    const EN = langNav[1]
-
-    PL.addEventListener("click", (e) => {
+    PL.addEventListener("click", () => {
+        lang = "pl"
         PL.classList.add("active")
         EN.classList.remove("active")
-        setLanguage(e.target.innerHTML.toLowerCase())
+        setLanguage("pl")
     })
 
-    EN.addEventListener("click", (e) => {
+    EN.addEventListener("click", () => {
+        lang = "en"
         EN.classList.add("active")
         PL.classList.remove("active")
-        setLanguage(e.target.innerHTML.toLowerCase().trim())
+        setLanguage("en")
     })
+}
+
+const refreshLang = () => {
+    lang === "en" ? EN.click() : PL.click()
 }

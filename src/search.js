@@ -11,7 +11,7 @@ const searchByDescription = (data, input) => {
 }
 
 const initSearch = () => {
-    document.querySelector(".search-btn").addEventListener("click", () => {
+    searchButton.addEventListener("click", () => {
         generateDataArticles(loggedDownPage, searchInput.value)
     })
 }

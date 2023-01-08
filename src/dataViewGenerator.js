@@ -18,59 +18,95 @@ const generateDataArticles = async (element, searchText) => {
 
     const dateArray = []
 
+    // generate lines with date
     for (transaction of transactionsWithId) {
         if (!dateArray.includes(transaction.date)) {
             generateLineWithDate(transaction, element)
             dateArray.push(transaction.date)
         }
 
-        const article = document.createElement("article")
-        article.classList.add("transaction")
+        element.append(generateArticle(transacationTypes))
 
-        const date = document.createElement("span")
-        date.classList.add("date")
-        date.innerHTML = transaction.date
-
-        const icon = document.createElement("span")
-        icon.classList.add("icon")
-        icon.innerHTML = getIconByTransactionType(transaction.type)
-
-        const desc = document.createElement("span")
-        desc.classList.add("description")
-        desc.innerHTML = transaction.description
-
-        const transactionTypeName = document.createElement("span")
-        transactionTypeName.classList.add("type", `type${transaction.type}`)
-        transactionTypeName.innerHTML = getDescriptionByTransactionType(
-            transacationTypes,
-            transaction.type
-        )
-
-        const amount = document.createElement("span")
-        amount.classList.add("amount")
-        amount.innerHTML = transaction.amount
-
-        const balance = document.createElement("span")
-        balance.classList.add("balance")
-        balance.innerHTML = `<span>Saldo: </span>${transaction.balance}`
-
-        article.append(date, icon, desc, transactionTypeName, amount, balance)
-        article.id = `${transaction.id}`
-
-        element.append(article)
+        refreshLang()
     }
 
+    generateArticlesBottom(element, transactions, searchText)
+    addEventListeners(articles)
+}
+
+const initBackButton = () => {
+    const buttonBack = document.querySelector(".back-btn")
+
+    buttonBack.addEventListener("click", () => {
+        searchInput.value = ""
+        searchButton.click()
+    })
+}
+
+const generateArticle = (transacationTypes) => {
+    const article = document.createElement("article")
+    article.classList.add("transaction")
+
+    const date = document.createElement("span")
+    date.classList.add("date")
+    date.innerHTML = transaction.date
+
+    const icon = document.createElement("span")
+    icon.classList.add("icon")
+    icon.innerHTML = getIconByTransactionType(transaction.type)
+
+    const desc = document.createElement("span")
+    desc.classList.add("description")
+    desc.innerHTML = transaction.description
+
+    const transactionTypeName = document.createElement("span")
+    transactionTypeName.classList.add("type", `type${transaction.type}`)
+    transactionTypeName.innerHTML = getDescriptionByTransactionType(
+        transacationTypes,
+        transaction.type
+    )
+
+    const amount = document.createElement("span")
+    amount.classList.add("amount")
+    amount.innerHTML = transaction.amount
+
+    const balance = document.createElement("span")
+    balance.classList.add("balance")
+    balance.innerHTML = `<span>Saldo: </span>${transaction.balance}`
+
+    article.append(date, icon, desc, transactionTypeName, amount, balance)
+    article.id = `${transaction.id}`
+
+    return article
+}
+
+const generateArticlesBottom = (element, transactions, searchText) => {
     if (articles.length === 0) {
         element.innerHTML = `
         <p class="not-found">
             <span class="first">Nie znaleziono wyników zawierjących</span>
             "${searchText}"
             <span class="second">w opisach transakcji.</span>
+            <br>
+            <br>
+            <button class="button back-btn">Powrót</button>          
         </p>
         `
-    }
+        initBackButton()
+        refreshLang()
+    } else if (articles.length !== transactions.length) {
+        const p = document.createElement("p")
+        p.classList.add("marginless")
 
-    addEventListeners(articles)
+        const buttonBack = document.createElement("button")
+        buttonBack.classList.add("button", "back-btn")
+        buttonBack.innerHTML = "Powrót"
+
+        p.append(buttonBack)
+        element.append(p)
+        initBackButton()
+        refreshLang()
+    }
 }
 
 const addEventListeners = (articles) => {

@@ -2,7 +2,13 @@ const loggedDownPage = document.querySelector(
     "main > div.logged > div.downPage > div.data"
 )
 
+let lang = "pl"
+const langNav = document.querySelectorAll(".lang > a")
+const PL = langNav[0]
+const EN = langNav[1]
+
 const searchInput = document.getElementById("search")
+const searchButton = document.querySelector(".search-btn")
 
 //nav
 const nav = document.querySelectorAll("body > header > nav > ul > li")

@@ -168,7 +168,6 @@ class LocalStorageApi {
         document.addEventListener("DOMContentLoaded", () => {
             if (this.currentUser && this.currentUser.login !== "") {
                 navigation.gotoLoggedView()
-
                 generateDataArticles(loggedDownPage)
             }
         })

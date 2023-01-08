@@ -24,6 +24,7 @@ const dictionary = {
             balance: "Balance: ",
             notFoundFirst: "There are no items with",
             notFoundSecond: "in transaction description.",
+            history: "Transactions history",
         },
         errors: {
             errorWrongName: "6-16 characters",
@@ -68,6 +69,7 @@ const dictionary = {
             balance: "Saldo: ",
             notFoundFirst: "Nie znaleziono wyników zawierjących",
             notFoundSecond: "w opisach transakcji.",
+            history: "Historia transakcji",
         },
         errors: {
             errorWrongName: "6-16 znaków",
