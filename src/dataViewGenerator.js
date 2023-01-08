@@ -7,10 +7,17 @@ const generateDataArticles = async (element, searchText) => {
 
     let transactionsWithId = addId(transactions)
 
-    /// search
+    // search
     if (searchText !== undefined) {
         transactionsWithId = [
             ...searchByDescription(transactionsWithId, searchText),
+        ]
+    }
+
+    // sorting
+    if (sorted) {
+        transactionsWithId = [
+            ...sortByTransactionType(transactionsWithId, sorted),
         ]
     }
 

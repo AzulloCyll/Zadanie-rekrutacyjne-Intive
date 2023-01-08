@@ -3,6 +3,8 @@ const loggedDownPage = document.querySelector(
 )
 
 let lang = "pl"
+let sorted = undefined
+
 const langNav = document.querySelectorAll(".lang > a")
 const PL = langNav[0]
 const EN = langNav[1]
@@ -28,3 +30,5 @@ const registerModalCloseButton = document.querySelector(".closeModal-btn")
 const loginModalCloseButton = document.querySelector(".close2Modal-btn")
 const loginModalRegisterButton = document.querySelector(".register2-btn")
 const xButtons = document.querySelectorAll(".x-button")
+
+const sortButton = document.querySelector(".sort-btn")
