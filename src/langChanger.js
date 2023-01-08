@@ -103,6 +103,12 @@ const setLanguage = (lang) => {
     for (const type of types4) {
         type.innerHTML = dictionary[lang].transactionTypes[4]
     }
+
+    //after search
+    document.querySelector("p.not-found span.first").innerHTML =
+        dictionary[lang].text.notFoundFirst
+    document.querySelector("p.not-found span.second").innerHTML =
+        dictionary[lang].text.notFoundSecond
 }
 
 const initLanguageChanger = () => {

@@ -54,8 +54,7 @@
 
 .logged .downPage .line .hr {
     border: 0;
-    border-bottom: 1px dashed #ccc;
-    background: #999;
+    border-bottom: 1px dashed #9c9fcc;
     margin: 11px;
 }
 

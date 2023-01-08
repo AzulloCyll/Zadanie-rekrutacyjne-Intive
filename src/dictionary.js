@@ -22,6 +22,8 @@ const dictionary = {
             loginP: "You can login by username or e-mail",
             ad: "We can't find your e-mail in our database.<br />Would you like to register?",
             balance: "Balance: ",
+            notFoundFirst: "There are no items with",
+            notFoundSecond: "in transaction description.",
         },
         errors: {
             errorWrongName: "6-16 characters",
@@ -64,6 +66,8 @@ const dictionary = {
             language: "Język:",
             ad: "Adresu e-mail, ktory podałeś nie ma w naszej bazie.<br />Czy chcesz się zarejestrować?",
             balance: "Saldo: ",
+            notFoundFirst: "Nie znaleziono wyników zawierjących",
+            notFoundSecond: "w opisach transakcji.",
         },
         errors: {
             errorWrongName: "6-16 znaków",

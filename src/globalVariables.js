@@ -2,6 +2,8 @@ const loggedDownPage = document.querySelector(
     "main > div.logged > div.downPage > div.data"
 )
 
+const searchInput = document.getElementById("search")
+
 //nav
 const nav = document.querySelectorAll("body > header > nav > ul > li")
 const mainPages = document.querySelectorAll("main > div")

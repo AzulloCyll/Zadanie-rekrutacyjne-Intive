@@ -1,17 +1,20 @@
 const articles = document.getElementsByTagName("article")
 
-const generateDataArticles = async (element) => {
+const generateDataArticles = async (element, searchText) => {
     let transactionData = await fetchData()
 
     const { transactions, transacationTypes } = transactionData
 
-    const transactionsWithId = addId(transactions)
-    console.log(transactionsWithId)
-    console.log(transacationTypes)
+    let transactionsWithId = addId(transactions)
+
+    /// search
+    if (searchText !== undefined) {
+        transactionsWithId = [
+            ...searchByDescription(transactionsWithId, searchText),
+        ]
+    }
 
     element.innerHTML = ""
-
-    //dopisać paski z datą na mobile
 
     const dateArray = []
 
@@ -57,13 +60,22 @@ const generateDataArticles = async (element) => {
         element.append(article)
     }
 
+    if (articles.length === 0) {
+        element.innerHTML = `
+        <p class="not-found">
+            <span class="first">Nie znaleziono wyników zawierjących</span>
+            "${searchText}"
+            <span class="second">w opisach transakcji.</span>
+        </p>
+        `
+    }
+
     addEventListeners(articles)
 }
 
 const addEventListeners = (articles) => {
     for (article of articles) {
         article.addEventListener("click", (e) => {
-            console.log(e.currentTarget.id)
             closeAllTransactions(articles)
             openTransactionById(articles, e.currentTarget.id)
         })
