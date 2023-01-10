@@ -98,10 +98,14 @@
             <div class="logged hidden">
                 <div class="upPage">
                     <div class="graphContainer">
-                        <div class="graph">Graph1</div>
+                        <div class="graph">
+                            <canvas id="graph1"></canvas>
+                        </div>
                     </div>
                     <div class="graphContainer">
-                        <div class="graph">Graph2</div>
+                        <div class="graph">
+                            <canvas id="graph2"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="downPage">
@@ -160,6 +164,8 @@
             </div>
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <script src="./src/globalVariables.js"></script>
         <script src="./src/utils.js"></script>
         <script src="./api/dataApi.js"></script>
@@ -172,6 +178,7 @@
         <script src="./src/hashingFn.js"></script>
         <script src="./src/search.js"></script>
         <script src="./src/sort.js"></script>
+        <script src="./api/chartDataApi.js"></script>
         <script src="./src/index.js"></script>
     </body>
 </html>

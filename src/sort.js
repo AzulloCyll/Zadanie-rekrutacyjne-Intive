@@ -1,5 +1,3 @@
-console.log("hello from sort")
-
 const sortByTransactionType = (data, vector) => {
     switch (vector) {
         case "asc":
