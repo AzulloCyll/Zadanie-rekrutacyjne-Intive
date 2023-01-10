@@ -9,6 +9,7 @@
     overflow: auto;
     white-space: nowrap;
     grid-row: 1 / 2;
+    overflow-y: hidden;
 }
 
 .logged .upPage .graphContainer {

@@ -9,19 +9,32 @@ const addChart = async (ctx) => {
     const transactionTypesCount =
         getNumberOfUniqueTransactionTypes(transactions)
 
-    console.log(
-        percentageOfTypeData(
-            transactions,
-            transactionTypesCount,
-            allTransactionsCount
-        )
+    const dataToView = percentageOfTypeData(
+        transactions,
+        transactionTypesCount,
+        allTransactionsCount
     )
 
+    console.log([...dataToView])
+
     const config = {
-        type: "bar",
+        type: "pie",
         data: {
-            labels: transactions.map((row) => row.type),
-            datasets: [{ label: "ttt", row: (row) => row.amount }], /// ????
+            datasets: [{ data: dataToView.map((item) => item.percentage) }],
+            labels: ["type1", "type2", "type3", "type4"],
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: "right",
+                },
+                title: {
+                    display: true,
+                    text: "Chart.js Pie Chart",
+                    position: "bottom",
+                },
+            },
         },
     }
 
@@ -64,14 +77,14 @@ const percentageOfTypeData = (
         const percentage = (amount / allTransactionsCount) * 100
 
         const item = {
-            type: index,
-            amount: amount,
-            percentage: percentage,
+            index,
+            percentage,
         }
 
         result.push(item)
     }
 
+    console.log(result)
     return result
 }
 
