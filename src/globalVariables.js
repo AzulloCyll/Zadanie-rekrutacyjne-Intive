@@ -3,6 +3,7 @@ const loggedDownPage = document.querySelector(
 )
 
 const ctx1 = document.getElementById("graph1")
+const ctx2 = document.getElementById("graph2")
 
 let lang = "pl"
 let sorted = undefined
