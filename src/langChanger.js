@@ -121,6 +121,10 @@ const setLanguage = (lang) => {
     if (backButton) {
         backButton.innerHTML = dictionary[lang].buttons.back
     }
+
+    // sort
+    sortButtonText = sortButton.getElementsByTagName("span")[0]
+    sortButtonText.innerHTML = dictionary[lang].text.sort
 }
 
 const initLanguageChanger = () => {

@@ -25,6 +25,7 @@ const dictionary = {
             notFoundFirst: "There are no items with",
             notFoundSecond: "in transaction description.",
             history: "Transactions history",
+            sort: "sort",
         },
         errors: {
             errorWrongName: "6-16 characters",
@@ -70,6 +71,7 @@ const dictionary = {
             notFoundFirst: "Nie znaleziono wyników zawierjących",
             notFoundSecond: "w opisach transakcji.",
             history: "Historia transakcji",
+            sort: "sortuj",
         },
         errors: {
             errorWrongName: "6-16 znaków",

@@ -1,9 +1,10 @@
-const ctx1 = document.getElementById("graph1")
-
-const addChart = async (ctx) => {
+const addCharts = async (ctx1, ctx2) => {
     const data = await fetchData()
 
     const { transactions } = data
+
+    const labelsEN = dictionary.en.transactionTypes
+    const labelsPL = dictionary.pl.transactionTypes
 
     const allTransactionsCount = transactions.length
     const transactionTypesCount =
@@ -12,16 +13,25 @@ const addChart = async (ctx) => {
     const dataToView = percentageOfTypeData(
         transactions,
         transactionTypesCount,
-        allTransactionsCount
+        allTransactionsCount,
+        labelsPL
     )
 
-    console.log([...dataToView])
-
-    const config = {
+    const config1 = {
         type: "pie",
         data: {
-            datasets: [{ data: dataToView.map((item) => item.percentage) }],
-            labels: ["type1", "type2", "type3", "type4"],
+            datasets: [
+                {
+                    data: dataToView.map((item) => item.percentage),
+                    backgroundColor: [
+                        "rgb(34,139,34)",
+                        "rgb(220,20,60)",
+                        "rgb(34,139,34)",
+                        "rgb(220,20,60)",
+                    ],
+                },
+            ],
+            labels: [...dataToView.map((item) => item.type)],
         },
         options: {
             responsive: true,
@@ -29,16 +39,24 @@ const addChart = async (ctx) => {
                 legend: {
                     position: "right",
                 },
-                title: {
-                    display: true,
-                    text: "Chart.js Pie Chart",
-                    position: "bottom",
-                },
             },
         },
     }
 
-    new Chart(ctx, config)
+    PL.addEventListener("click", () => {
+        updateChartLabels(chart1, labelsPL)
+    })
+
+    EN.addEventListener("click", () => {
+        updateChartLabels(chart1, labelsEN)
+    })
+
+    const chart1 = new Chart(ctx1, config1)
+}
+
+const updateChartLabels = (chart, labels) => {
+    chart.config.data.labels = Object.values(labels)
+    chart.update()
 }
 
 const getNumberOfTransactionsByType = (type, transactions) => {
@@ -68,24 +86,24 @@ const getNumberOfUniqueTransactionTypes = (transactions) => {
 const percentageOfTypeData = (
     transactions,
     transactionTypesCount,
-    allTransactionsCount
+    allTransactionsCount,
+    transacationTypes
 ) => {
     const result = []
 
     for (let index = 1; index <= transactionTypesCount; index++) {
         const amount = getNumberOfTransactionsByType(index, transactions)
         const percentage = (amount / allTransactionsCount) * 100
+        const type = getDescriptionByTransactionType(transacationTypes, index)
 
         const item = {
-            index,
+            type,
             percentage,
         }
 
         result.push(item)
     }
-
-    console.log(result)
     return result
 }
 
-addChart(ctx1)
+addCharts(ctx1)

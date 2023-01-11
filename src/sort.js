@@ -15,20 +15,21 @@ const sortByTransactionType = (data, vector) => {
 
 const initSortButton = () => {
     sortButton.addEventListener("click", (e) => {
+        const sortButtonIcon = sortButton.getElementsByTagName("span")[1]
         if (sorted === undefined) {
             sorted = e.currentTarget.getAttribute("data-vector")
             generateDataArticles(loggedDownPage)
-            sortButton.innerHTML = "Sort <i class='fa-solid fa-caret-up'></i>"
+            sortButtonIcon.innerHTML = "<i class='fa-solid fa-caret-up'></i>"
         } else if (sorted === "asc") {
             sorted = "desc"
             e.currentTarget.setAttribute("data-vector", "asc")
             generateDataArticles(loggedDownPage)
-            sortButton.innerHTML = "Sort <i class='fa-solid fa-caret-down'></i>"
+            sortButtonIcon.innerHTML = "<i class='fa-solid fa-caret-down'></i>"
         } else if (sorted === "desc") {
             sorted = "asc"
             e.currentTarget.setAttribute("data-vector", "desc")
             generateDataArticles(loggedDownPage)
-            sortButton.innerHTML = "Sort <i class='fa-solid fa-caret-up'></i>"
+            sortButtonIcon.innerHTML = "<i class='fa-solid fa-caret-up'></i>"
         }
     })
 }

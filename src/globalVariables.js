@@ -2,6 +2,8 @@ const loggedDownPage = document.querySelector(
     "main > div.logged > div.downPage > div.data"
 )
 
+const ctx1 = document.getElementById("graph1")
+
 let lang = "pl"
 let sorted = undefined
 
