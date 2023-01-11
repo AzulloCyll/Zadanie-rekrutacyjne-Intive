@@ -66,7 +66,7 @@ const addCharts = async (ctx1, ctx2) => {
         updateChartLabels(chart1, labelsEN)
     })
 
-    const chart1 = new Chart(ctx2, config1)
+    const chart1 = new Chart(ctx2, config1) // change this
     const chart2 = new Chart(ctx1, config2)
 }
 
