@@ -1,21 +1,15 @@
 const addCharts = async (ctx1, ctx2) => {
-    const data = await fetchData()
+    // const data = await fetchData()
+    // const { transactions } = data
 
-    const { transactions } = data
+    const transactions = dataFile[2]
 
     const labelsEN = dictionary.en.transactionTypes
     const labelsPL = dictionary.pl.transactionTypes
 
     const allTransactionsCount = transactions.length
-    const transactionTypesCount =
-        getNumberOfUniqueTransactionTypes(transactions)
 
-    const dataToView1 = percentageOfTypeData(
-        transactions,
-        transactionTypesCount,
-        allTransactionsCount,
-        labelsPL
-    )
+    const dataToView1 = percentageOfTypeData(transactions, allTransactionsCount)
 
     const days = getDates(transactions)
     const lastTransactions = lastTransactionsOfDay(days, transactions)
@@ -30,10 +24,14 @@ const addCharts = async (ctx1, ctx2) => {
                 {
                     data: dataToView1.map((item) => item.percentage),
                     backgroundColor: [
-                        "rgb(34,139,34)",
-                        "rgb(220,20,60)",
-                        "rgb(34,139,34)",
-                        "rgb(220,20,60)",
+                        ...dataToView1.map((item) => {
+                            if (item.type % 2 !== 0) {
+                                return "rgb(34,139,34)"
+                            }
+                            if (item.type % 2 === 0) {
+                                return "rgb(220,20,60)"
+                            }
+                        }),
                     ],
                 },
             ],
@@ -59,39 +57,34 @@ const addCharts = async (ctx1, ctx2) => {
     }
 
     PL.addEventListener("click", () => {
-        updateChartLabels(chart1, labelsPL)
+        updateChartLabels(chart1, labelsPL, dataToView1)
     })
 
     EN.addEventListener("click", () => {
-        updateChartLabels(chart1, labelsEN)
+        updateChartLabels(chart1, labelsEN, dataToView1)
     })
 
     const chart1 = new Chart(ctx2, config1) // change this
     const chart2 = new Chart(ctx1, config2)
 }
 
-const updateChartLabels = (chart, labels) => {
-    chart.config.data.labels = Object.values(labels)
+const updateChartLabels = (chart, labels, data) => {
+    const result = []
+    for (let item of data) {
+        result.push(labels[item.type])
+    }
+
+    chart.config.data.labels = result
     chart.update()
 }
+
+const getTransactionNameByType = (chart, labels, data) => {}
 
 const getNumberOfTransactionsByType = (type, transactions) => {
     const result = []
 
     for (let transaction of transactions) {
         if (transaction.type === type) {
-            result.push(transaction.type)
-        }
-    }
-
-    return result.length
-}
-
-const getNumberOfUniqueTransactionTypes = (transactions) => {
-    const result = []
-
-    for (let transaction of transactions) {
-        if (!result.includes(transaction.type)) {
             result.push(transaction.type)
         }
     }
@@ -106,6 +99,7 @@ const getDates = (transactions) => {
             result.push(transaction.date)
         }
     }
+
     return result
 }
 
@@ -118,26 +112,23 @@ const lastTransactionsOfDay = (days, transactions) => {
     return result
 }
 
-const percentageOfTypeData = (
-    transactions,
-    transactionTypesCount,
-    allTransactionsCount,
-    transacationTypes
-) => {
+const percentageOfTypeData = (transactions, allTransactionsCount) => {
     const result = []
 
-    for (let index = 1; index <= transactionTypesCount; index++) {
+    for (let index = 1; index <= 4; index++) {
         const amount = getNumberOfTransactionsByType(index, transactions)
         const percentage = (amount / allTransactionsCount) * 100
-        const type = getDescriptionByTransactionType(transacationTypes, index)
+        const type = index.toString()
 
         const item = {
             type,
+            amount,
             percentage,
         }
 
-        result.push(item)
+        if (percentage > 0) result.push(item)
     }
+
     return result
 }
 
