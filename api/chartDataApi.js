@@ -12,10 +12,13 @@ const addCharts = async (ctx1, ctx2) => {
     const dataToView1 = percentageOfTypeData(transactions, allTransactionsCount)
 
     const days = getDates(transactions)
-    const lastTransactions = lastTransactionsOfDay(days, transactions)
+    const balanceFromLastTransactionOfDay = getLastTransactionsOfDayBalance(
+        days,
+        transactions
+    )
 
     console.log(getDates(transactions))
-    console.log(lastTransactions)
+    console.log(balanceFromLastTransactionOfDay)
 
     const config1 = {
         type: "pie",
@@ -50,25 +53,64 @@ const addCharts = async (ctx1, ctx2) => {
     const config2 = {
         type: "bar",
         data: {
-            options: {
-                responsive: true,
+            datasets: [
+                {
+                    data: [...balanceFromLastTransactionOfDay],
+                    backgroundColor: [
+                        "rgb(34,139,34)",
+                        "rgb(220,20,60)",
+                        "rgb(34,139,34)",
+                    ],
+                },
+            ],
+            labels: [...days],
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                    position: "top",
+                },
+            },
+            scales: {
+                x: {
+                    border: {
+                        display: true,
+                    },
+                    grid: {
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: true,
+                    },
+                },
+                y: {
+                    border: {
+                        display: false,
+                    },
+                    grid: {
+                        color: (ctx) => {
+                            if (ctx.tick.value === 0) return "#000000"
+                        },
+                    },
+                },
             },
         },
     }
 
     PL.addEventListener("click", () => {
-        updateChartLabels(chart1, labelsPL, dataToView1)
+        updateChart1Labels(chart1, labelsPL, dataToView1)
     })
 
     EN.addEventListener("click", () => {
-        updateChartLabels(chart1, labelsEN, dataToView1)
+        updateChart1Labels(chart1, labelsEN, dataToView1)
     })
 
     const chart1 = new Chart(ctx2, config1) // change this
     const chart2 = new Chart(ctx1, config2)
 }
 
-const updateChartLabels = (chart, labels, data) => {
+const updateChart1Labels = (chart, labels, data) => {
     const result = []
     for (let item of data) {
         result.push(labels[item.type])
@@ -77,8 +119,6 @@ const updateChartLabels = (chart, labels, data) => {
     chart.config.data.labels = result
     chart.update()
 }
-
-const getTransactionNameByType = (chart, labels, data) => {}
 
 const getNumberOfTransactionsByType = (type, transactions) => {
     const result = []
@@ -103,7 +143,7 @@ const getDates = (transactions) => {
     return result
 }
 
-const lastTransactionsOfDay = (days, transactions) => {
+const getLastTransactionsOfDayBalance = (days, transactions) => {
     const result = []
     for (let day of days) {
         const lastTransaction = transactions.find((item) => day === item.date)
