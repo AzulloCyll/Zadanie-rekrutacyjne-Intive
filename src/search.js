@@ -14,4 +14,9 @@ const initSearch = () => {
     searchButton.addEventListener("click", () => {
         generateDataArticles(loggedDownPage, searchInput.value)
     })
+    searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            generateDataArticles(loggedDownPage, searchInput.value)
+        }
+    })
 }

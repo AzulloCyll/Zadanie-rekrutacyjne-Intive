@@ -1,8 +1,17 @@
 const addCharts = async (ctx1, ctx2) => {
-    // const data = await fetchData()
-    // const { transactions } = data
+    let transactions = []
 
-    const transactions = dataFile[2]
+    // to przeniesc do rejestracji, a stąd pobierać dane z localStorage
+    // wtedy async nie jest wymagane i mozna uproscic całość
+
+    if (dataSelected) {
+        console.log(dataSelected)
+        transactions = [...dataSelected]
+    } else {
+        const data = await fetchData()
+        console.log("fetching")
+        transactions = data.transactions
+    }
 
     const labelsEN = dictionary.en.transactionTypes
     const labelsPL = dictionary.pl.transactionTypes
@@ -56,11 +65,13 @@ const addCharts = async (ctx1, ctx2) => {
             datasets: [
                 {
                     data: [...balanceFromLastTransactionOfDay],
-                    backgroundColor: [
-                        "rgb(34,139,34)",
-                        "rgb(220,20,60)",
-                        "rgb(34,139,34)",
-                    ],
+                    backgroundColor: balanceFromLastTransactionOfDay.map(
+                        (item) => {
+                            if (item > 0) {
+                                return "rgb(34,139,34)"
+                            } else return "rgb(220,20,60)"
+                        }
+                    ),
                 },
             ],
             labels: [...days],

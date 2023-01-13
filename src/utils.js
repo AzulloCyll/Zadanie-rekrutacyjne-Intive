@@ -21,3 +21,16 @@ const showAll = (elements) => {
 const changeUsername = (userName) => {
     document.querySelector(".username").innerHTML = userName
 }
+
+const randomFromMaxInteger = (number) => {
+    const min = 0
+    const max = number
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+const getDataFromDataObjectByNumber = (data, number) => {
+    return data[number]
+}
+
+const getNumber = randomFromMaxInteger(dataFile.length)
+const dataSelected = getDataFromDataObjectByNumber(dataFile, getNumber)

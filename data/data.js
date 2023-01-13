@@ -1,11 +1,18 @@
-const dataFile = {
-    1: [
+const dataFile = [
+    [
+        {
+            date: "2022-11-14",
+            type: 2,
+            amount: -231.56,
+            balance: -2337.25,
+            description: "Biedronka 13",
+        },
         {
             date: "2022-11-12",
             type: 2,
             amount: -231.56,
             balance: -4337.25,
-            description: "Biedronka 13",
+            description: "Pepco",
         },
         {
             date: "2022-11-12",
@@ -50,7 +57,7 @@ const dataFile = {
             description: "PayU Spółka Akcyjna",
         },
     ],
-    2: [
+    [
         {
             date: "2022-11-02",
             type: 1,
@@ -80,4 +87,4 @@ const dataFile = {
             description: "PayU Spółka Akcyjna",
         },
     ],
-}
+]
