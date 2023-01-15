@@ -2,9 +2,9 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
     let transactions = []
     const dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
 
-    const labels = getLabelsByLanguage(lang)
+    const labels = getLabelsByLanguage(lang) // for logoff and login again
 
-    console.log(labels)
+    //for button lang changer
     const labelsPL = dictionary.pl.transactionTypes
     const labelsEN = dictionary.en.transactionTypes
 
@@ -24,6 +24,7 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
         labels
     )
 
+    //second graph
     const days = getDates(transactions)
     const balanceFromLastTransactionOfDay = getLastTransactionsOfDayBalance(
         days,
@@ -31,7 +32,7 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
     )
 
     const config1 = {
-        type: "pie",
+        type: "doughnut",
         data: {
             datasets: [
                 {
@@ -52,9 +53,22 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
         },
         options: {
             responsive: true,
+            layout: {
+                padding: {
+                    top: 50,
+                    bottom: 50,
+                    right: 0,
+                    left: 0,
+                },
+            },
             plugins: {
                 legend: {
                     position: "right",
+                },
+                title: {
+                    display: true,
+                    position: "top",
+                    text: "Transakcje według typu",
                 },
             },
         },
@@ -79,10 +93,18 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
         },
         options: {
             responsive: true,
+            layout: {
+                padding: 40,
+            },
+            aspectRatio: 1.2,
             plugins: {
                 legend: {
                     display: false,
                     position: "top",
+                },
+                title: {
+                    display: true,
+                    text: "Saldo na koniec dnia",
                 },
             },
             scales: {
@@ -110,27 +132,32 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
         },
     }
 
-    const chart1 = await new Chart(ctx1, config1)
-    const chart2 = await new Chart(ctx2, config2)
+    const chart1 = await new Chart(ctx2, config1)
+    const chart2 = await new Chart(ctx1, config2)
 
-    const addListeners = () => {
-        PL.onclick = () => {
-            updateChart1Labels(chart1, labelsPL, dataToView1)
-        }
+    PL.onclick = () => {
+        updateChart1(chart1, labelsPL, dataToView1, "Transakcje według typu")
+        updateChart2(chart2, "Saldo na koniec dnia")
+    }
 
-        EN.onclick = () => {
-            updateChart1Labels(chart1, labelsEN, dataToView1)
-        }
+    EN.onclick = () => {
+        updateChart1(chart1, labelsPL, dataToView1, "Transactions by type")
+        updateChart2(chart2, "End of the day balance")
     }
 }
 
-const updateChart1Labels = (chart, labels, data) => {
+const updateChart1 = (chart, labels, data, text) => {
     const result = []
     for (let item of data) {
         result.push(labels[item.type])
     }
-
     chart.config.data.labels = result
+    chart.config.options.plugins.title.text = text
+    chart.update()
+}
+
+const updateChart2 = (chart, text) => {
+    chart.config.options.plugins.title.text = text
     chart.update()
 }
 
