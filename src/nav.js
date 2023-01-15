@@ -67,6 +67,10 @@ class Navigate {
         this.logoffButton.addEventListener("click", () => {
             localStorageApi.getUsers()
             localStorageApi.deleteCurrentUser()
+
+            Chart.getChart("graph1") && Chart.getChart("graph1").destroy()
+            Chart.getChart("graph2") && Chart.getChart("graph2").destroy()
+
             this.gotoUnloggedView()
         })
 

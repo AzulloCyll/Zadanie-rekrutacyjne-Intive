@@ -1,33 +1,34 @@
-const addCharts = async (ctx1, ctx2) => {
+const addCharts = async (ctx1, ctx2, currentUser) => {
     let transactions = []
+    const dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
 
-    // to przeniesc do rejestracji, a stąd pobierać dane z localStorage
-    // wtedy async nie jest wymagane i mozna uproscic całość
+    const labels = getLabelsByLanguage(lang)
 
-    if (dataSelected) {
-        console.log(dataSelected)
-        transactions = [...dataSelected]
-    } else {
+    console.log(labels)
+    const labelsPL = dictionary.pl.transactionTypes
+    const labelsEN = dictionary.en.transactionTypes
+
+    if (dataSet) {
+        transactions = [...dataSet]
+    } else if (currentUser.login !== "") {
         const data = await fetchData()
-        console.log("fetching")
+        console.log("No saved data found -> fetching data from server")
         transactions = data.transactions
     }
 
-    const labelsEN = dictionary.en.transactionTypes
-    const labelsPL = dictionary.pl.transactionTypes
-
     const allTransactionsCount = transactions.length
 
-    const dataToView1 = percentageOfTypeData(transactions, allTransactionsCount)
+    const dataToView1 = percentageOfTypeData(
+        transactions,
+        allTransactionsCount,
+        labels
+    )
 
     const days = getDates(transactions)
     const balanceFromLastTransactionOfDay = getLastTransactionsOfDayBalance(
         days,
         transactions
     )
-
-    console.log(getDates(transactions))
-    console.log(balanceFromLastTransactionOfDay)
 
     const config1 = {
         type: "pie",
@@ -47,7 +48,7 @@ const addCharts = async (ctx1, ctx2) => {
                     ],
                 },
             ],
-            labels: [...dataToView1.map((item) => item.type)],
+            labels: [...dataToView1.map((item) => item.label)],
         },
         options: {
             responsive: true,
@@ -109,16 +110,18 @@ const addCharts = async (ctx1, ctx2) => {
         },
     }
 
-    PL.addEventListener("click", () => {
-        updateChart1Labels(chart1, labelsPL, dataToView1)
-    })
+    const chart1 = await new Chart(ctx1, config1)
+    const chart2 = await new Chart(ctx2, config2)
 
-    EN.addEventListener("click", () => {
-        updateChart1Labels(chart1, labelsEN, dataToView1)
-    })
+    const addListeners = () => {
+        PL.onclick = () => {
+            updateChart1Labels(chart1, labelsPL, dataToView1)
+        }
 
-    const chart1 = new Chart(ctx2, config1) // change this
-    const chart2 = new Chart(ctx1, config2)
+        EN.onclick = () => {
+            updateChart1Labels(chart1, labelsEN, dataToView1)
+        }
+    }
 }
 
 const updateChart1Labels = (chart, labels, data) => {
@@ -143,6 +146,16 @@ const getNumberOfTransactionsByType = (type, transactions) => {
     return result.length
 }
 
+const getLabelsByLanguage = () => {
+    if (lang === "pl") {
+        return dictionary.pl.transactionTypes
+    }
+
+    if (lang === "en") {
+        return dictionary.en.transactionTypes
+    }
+}
+
 const getDates = (transactions) => {
     const result = []
     for (let transaction of transactions) {
@@ -163,7 +176,7 @@ const getLastTransactionsOfDayBalance = (days, transactions) => {
     return result
 }
 
-const percentageOfTypeData = (transactions, allTransactionsCount) => {
+const percentageOfTypeData = (transactions, allTransactionsCount, labels) => {
     const result = []
 
     for (let index = 1; index <= 4; index++) {
@@ -175,6 +188,7 @@ const percentageOfTypeData = (transactions, allTransactionsCount) => {
             type,
             amount,
             percentage,
+            label: labels[index],
         }
 
         if (percentage > 0) result.push(item)
@@ -182,5 +196,3 @@ const percentageOfTypeData = (transactions, allTransactionsCount) => {
 
     return result
 }
-
-addCharts(ctx1, ctx2)

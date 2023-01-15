@@ -29,7 +29,7 @@ const randomFromMaxInteger = (number) => {
 }
 
 const getDataFromDataObjectByNumber = (data, number) => {
-    return data[number]
+    return data[number] ? data[number] : false
 }
 
 const getNumber = randomFromMaxInteger(dataFile.length)

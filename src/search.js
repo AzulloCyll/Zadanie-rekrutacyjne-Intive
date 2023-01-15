@@ -12,11 +12,19 @@ const searchByDescription = (data, input) => {
 
 const initSearch = () => {
     searchButton.addEventListener("click", () => {
-        generateDataArticles(loggedDownPage, searchInput.value)
+        generateDataArticles(
+            loggedDownPage,
+            localStorageApi.currentUser,
+            searchInput.value
+        )
     })
     searchInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
-            generateDataArticles(loggedDownPage, searchInput.value)
+            generateDataArticles(
+                loggedDownPage,
+                localStorageApi.currentUser,
+                searchInput.value
+            )
         }
     })
 }

@@ -20,6 +20,7 @@ class LocalStorageApi {
                 window.localStorage.getItem("currentUser")
             )
         }
+        return this.currentUser
     }
 
     setCurrentUser = (user) => {
@@ -38,6 +39,7 @@ class LocalStorageApi {
             login: login,
             email: email,
             password: crypt(login, password),
+            dataSet: randomFromMaxInteger(dataFile.length),
         }
 
         hideAll(errors)
@@ -93,7 +95,7 @@ class LocalStorageApi {
                 decrypt(foundByUser.login, foundByUser.password) ===
                 userToFind.password
             )
-                return 1
+                return foundByUser
         }
 
         if (foundByEmail) {
@@ -101,19 +103,20 @@ class LocalStorageApi {
                 decrypt(foundByEmail.login, foundByEmail.password) ===
                 userToFind.password
             )
-                return 1
+                return foundByEmail
         }
 
         return 0
     }
 
-    showData = (loggingUser) => {
+    showData = (user) => {
         hideAll(errors)
         navigation.gotoLoggedView()
-        this.setCurrentUser(loggingUser)
-        changeUsername(loggingUser.login)
+        this.setCurrentUser(user)
+        changeUsername(user.login)
 
-        generateDataArticles(loggedDownPage)
+        addCharts(ctx1, ctx2, localStorageApi.currentUser)
+        generateDataArticles(loggedDownPage, this.currentUser)
     }
 
     loginUser = (login, password) => {
@@ -125,31 +128,37 @@ class LocalStorageApi {
 
         const isUserExist = this.checkIfUserExist(loggingUser, this.users)
         const isEmailExist = this.checkIfEmailExists(loggingUser, this.users)
-        const isPasswordCorrect = this.checkIfPasswordCorrect(
+
+        const isCredentialsGoodAndReturnUser = this.checkIfPasswordCorrect(
             loggingUser,
             this.users
         )
+
         const isLoginEmail = validateEmail(login)
 
         if (!isLoginEmail) {
-            if (isUserExist && isPasswordCorrect) {
-                this.showData(loggingUser)
+            if (isUserExist && isCredentialsGoodAndReturnUser) {
+                this.currentUser = isCredentialsGoodAndReturnUser
+
+                this.showData(this.currentUser)
             }
 
-            if (!isUserExist && !isPasswordCorrect) {
+            if (!isUserExist && !isCredentialsGoodAndReturnUser) {
                 hideAll(errors)
                 show(errors[8])
                 show(modals[0])
             }
 
-            if (isUserExist && !isPasswordCorrect) {
+            if (isUserExist && !isCredentialsGoodAndReturnUser) {
                 hideAll(errors)
                 show(errors[9])
                 show(modals[0])
             }
         } else {
-            if (isEmailExist && isPasswordCorrect) {
-                this.showData(loggingUser)
+            if (isEmailExist && isCredentialsGoodAndReturnUser) {
+                this.currentUser = isCredentialsGoodAndReturnUser
+
+                this.showData(this.currentUser)
             } else if (!isEmailExist) {
                 show(modals[1])
             } else {
@@ -168,7 +177,9 @@ class LocalStorageApi {
         document.addEventListener("DOMContentLoaded", () => {
             if (this.currentUser && this.currentUser.login !== "") {
                 navigation.gotoLoggedView()
-                generateDataArticles(loggedDownPage)
+                generateDataArticles(loggedDownPage, this.currentUser)
+
+                addCharts(ctx1, ctx2, localStorageApi.currentUser)
             }
         })
     }

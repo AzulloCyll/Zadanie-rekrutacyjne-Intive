@@ -7,6 +7,7 @@ const ctx2 = document.getElementById("graph2")
 
 let lang = "pl"
 let sorted = undefined
+let addedListeners
 
 const langNav = document.querySelectorAll(".lang > a")
 const PL = langNav[0]

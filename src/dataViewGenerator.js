@@ -1,9 +1,19 @@
 const articles = document.getElementsByTagName("article")
 
-const generateDataArticles = async (element, searchText) => {
-    let transactionData = await fetchData()
+const generateDataArticles = async (element, currentUser, searchText) => {
+    let transactions = []
+    const transactionData = await fetchData()
+    const { transacationTypes } = transactionData
 
-    const { transactions, transacationTypes } = transactionData
+    const dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
+
+    if (dataSet) {
+        transactions = [...dataSet]
+    } else {
+        const data = await fetchData()
+        console.log("No saved data found -> fetching data from server")
+        transactions = data.transactions
+    }
 
     let transactionsWithId = addId(transactions)
 
