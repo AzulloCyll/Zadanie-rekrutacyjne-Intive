@@ -7,7 +7,7 @@ const generateDataArticles = async (element, currentUser, searchText) => {
 
     let dataSet
 
-    if (currentUser.dataSet) {
+    if (currentUser.dataSet !== undefined) {
         dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
     }
 
