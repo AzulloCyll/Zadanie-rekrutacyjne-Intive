@@ -5,7 +5,11 @@ const generateDataArticles = async (element, currentUser, searchText) => {
     const transactionData = await fetchData()
     const { transacationTypes } = transactionData
 
-    const dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
+    let dataSet
+
+    if (currentUser.dataSet) {
+        dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
+    }
 
     if (dataSet) {
         transactions = [...dataSet]

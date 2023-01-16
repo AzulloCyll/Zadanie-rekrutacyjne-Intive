@@ -72,7 +72,8 @@ class LocalStorageApi {
             this.setCurrentUser(newUser)
             navigation.gotoLoggedView()
 
-            generateDataArticles(loggedDownPage)
+            addCharts(ctx1, ctx2, localStorageApi.currentUser)
+            generateDataArticles(loggedDownPage, this.currentUser)
         }
     }
 
@@ -177,9 +178,9 @@ class LocalStorageApi {
         document.addEventListener("DOMContentLoaded", () => {
             if (this.currentUser && this.currentUser.login !== "") {
                 navigation.gotoLoggedView()
-                generateDataArticles(loggedDownPage, this.currentUser)
-
+               
                 addCharts(ctx1, ctx2, localStorageApi.currentUser)
+                generateDataArticles(loggedDownPage, this.currentUser)
             }
         })
     }
