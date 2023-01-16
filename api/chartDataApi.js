@@ -2,7 +2,7 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
     let transactions = []
     const dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
 
-    const labels = getLabelsByLanguage(lang) // for logoff and login again
+    const labels = getLabelsByLanguage(lang)
 
     if (dataSet) {
         transactions = [...dataSet]

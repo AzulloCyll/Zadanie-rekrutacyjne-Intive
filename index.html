@@ -39,7 +39,7 @@
             <div class="login hidden">
                 <h1>Logowanie</h1>
                 <p>
-                    Możesz logować się za pomocą nazwy użytkownika albo e-maila
+                    Możesz logować się za pomocą nazwy użytkownika albo emaila
                 </p>
                 <form id="login">
                     <div class="line">
@@ -48,12 +48,17 @@
                             type="text"
                             name="name"
                             id="name"
-                            default="Wpisz nazwę użytkownika"
+                            placeholder="wpisz nazwę użytkownika lub email"
                         />
                     </div>
                     <div class="line">
                         <label for="passwd">Hasło:</label>
-                        <input type="text" name="passwd" id="passwd" />
+                        <input
+                            type="password"
+                            name="passwd"
+                            id="passwd"
+                            placeholder="wpisz swoje hasło"
+                        />
                     </div>
 
                     <div class="line">
@@ -68,24 +73,46 @@
                 <form id="register">
                     <div class="line">
                         <label for="name2">Login:</label>
-                        <input type="text" name="name2" id="name2" />
-                        <div class="errors hidden">6-16 znaków</div>
+                        <input
+                            type="text"
+                            name="name2"
+                            id="name2"
+                            placeholder="wpisz nazwę użytkownika"
+                        />
+                        <div class="errors hidden">
+                            nieprawidłowa nazwa - patrz niżej na wskazówkę
+                        </div>
                     </div>
                     <div class="line">
-                        <label for="email">e-mail:</label>
-                        <input type="email" name="email" id="email" />
-                        <div class="errors hidden">nieprawidłowy e-mail</div>
-                        <div class="errors hidden">e-maile niezgodne</div>
+                        <label for="email">email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="wpisz swój email"
+                        />
+                        <div class="errors hidden">nieprawidłowy email</div>
+                        <div class="errors hidden">emaile niezgodne</div>
                     </div>
                     <div class="line">
-                        <label for="email2">Powtórz e-mail:</label>
-                        <input type="email" name="email2" id="email2" />
-                        <div class="errors hidden">nieprawidłowy e-mail</div>
-                        <div class="errors hidden">e-maile niezgodne</div>
+                        <label for="email2">Powtórz email:</label>
+                        <input
+                            type="email"
+                            name="email2"
+                            id="email2"
+                            placeholder="przepisz swój email"
+                        />
+                        <div class="errors hidden">nieprawidłowy email</div>
+                        <div class="errors hidden">emaile niezgodne</div>
                     </div>
                     <div class="line">
                         <label for="passwd2">Hasło:</label>
-                        <input type="text" name="passwd2" id="passwd2" />
+                        <input
+                            type="password"
+                            name="passwd2"
+                            id="passwd2"
+                            placeholder="wpisz swoje hasło"
+                        />
                         <div class="errors hidden">minimum 6 znaków</div>
                     </div>
                     <div class="line">
@@ -94,6 +121,11 @@
                         </button>
                     </div>
                 </form>
+                <p>
+                    <b>Uwaga:</b><br />Nazwa użytkownika powinna mieć od 6 do 16
+                    znaków,<br />którymi są litery, cyfry lub znaki "-_[]\/",
+                    musi mieć conajmniej 5 liter i 1 cyfrę.
+                </p>
             </div>
             <div class="logged hidden">
                 <div class="upPage">
@@ -153,7 +185,7 @@
         <div class="modal ad hidden">
             <div class="info">
                 <p>
-                    Adresu e-mail, ktory podałeś nie ma w&nbsp;naszej bazie.
+                    Adresu email, ktory podałeś nie ma w&nbsp;naszej bazie.
                     <br />
                     Czy chcesz się zarejestrować?
                 </p>

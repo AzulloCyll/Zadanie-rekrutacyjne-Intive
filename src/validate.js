@@ -1,5 +1,8 @@
 const validateName = (input) => {
-    const regex = new RegExp("^.{6,16}$") //all chars 6-16
+    // letters, numbers and -_\/[]; 6-16 chars; at least 5 letters and one number; no spaces
+    const regex = new RegExp(
+        "^(?=(?:.*[a-zA-Z]){5,})(?=(?:.*[0-9]){1,})([A-Za-z0-9-_\\]\\[\\/\\\\]{6,16})$"
+    )
     return regex.test(input.value)
 }
 
@@ -19,11 +22,7 @@ const validatePassword = (input) => {
 }
 
 const inputCompare = (input1, input2) => {
-    if (input1.value !== input2.value) {
-        return false
-    } else {
-        return true
-    }
+    return input1.value === input2.value ? true : false
 }
 
 const showErrors = (...inputs) => {

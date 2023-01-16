@@ -57,6 +57,7 @@ main .login p {
     margin-bottom: 50px;
     font-size: small;
     text-align: center;
+    padding: 0px 30px;
 }
 
 main .login form,
@@ -92,17 +93,25 @@ main .register form .line input {
 }
 
 main .login form .line label {
-    width: 15%;
+    width: 25%;
+    font-size: 13px;
 }
 main .login form .line input {
-    width: 75%;
+    width: 70%;
 }
 
 main .register form .line label {
-    width: 30%;
+    width: 25%;
+    font-size: 13px;
 }
 main .register form .line input {
-    width: 60%;
+    width: 70%;
+}
+
+body > main > div.register > p {
+    text-align: center;
+    padding: 0px 40px;
+    font-size: 13px;
 }
 
 .button {

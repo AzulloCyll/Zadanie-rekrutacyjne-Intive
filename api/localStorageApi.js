@@ -74,6 +74,12 @@ class LocalStorageApi {
 
             addCharts(ctx1, ctx2, localStorageApi.currentUser)
             generateDataArticles(loggedDownPage, this.currentUser)
+
+            // cleaning form inputs
+            registerForm.name2.value = ""
+            registerForm.email.value = ""
+            registerForm.email2.value = ""
+            registerForm.passwd2.value = ""
         }
     }
 
@@ -161,6 +167,7 @@ class LocalStorageApi {
 
                 this.showData(this.currentUser)
             } else if (!isEmailExist) {
+                // if login is email and not registered
                 show(modals[1])
             } else {
                 hideAll(errors)
@@ -178,7 +185,7 @@ class LocalStorageApi {
         document.addEventListener("DOMContentLoaded", () => {
             if (this.currentUser && this.currentUser.login !== "") {
                 navigation.gotoLoggedView()
-               
+
                 addCharts(ctx1, ctx2, localStorageApi.currentUser)
                 generateDataArticles(loggedDownPage, this.currentUser)
             }

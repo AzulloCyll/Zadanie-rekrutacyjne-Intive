@@ -101,12 +101,14 @@ class Navigate {
             this.closeModal(this.modals[1])
         })
 
+        // go to registration button
         this.modal1RegisterButton.addEventListener("click", () => {
             this.closeModal(this.modals[1])
             registerForm.email.value = loginForm.name.value
             navigation.gotoRegisterView()
         })
 
+        // x buttons on modals
         this.xButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 this.closeModal(this.modals[0])

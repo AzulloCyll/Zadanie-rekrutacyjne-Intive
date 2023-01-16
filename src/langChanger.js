@@ -38,6 +38,14 @@ const setLanguage = (lang) => {
     document.querySelector(".register-btn").innerHTML =
         dictionary[lang].buttons.register
 
+    //placeholders
+    loginForm.name.placeholder = dictionary[lang].placeholders.loginOrEmail
+    loginForm.passwd.placeholder = dictionary[lang].placeholders.password
+    registerForm.name2.placeholder = dictionary[lang].placeholders.name
+    registerForm.passwd2.placeholder = dictionary[lang].placeholders.password
+    registerForm.email.placeholder = dictionary[lang].placeholders.email
+    registerForm.email2.placeholder = dictionary[lang].placeholders.retypeEmail
+
     // language changer
     document.querySelector(".lang span").innerHTML =
         dictionary[lang].text.language
