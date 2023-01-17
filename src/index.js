@@ -1,3 +1,7 @@
+let lang = "pl"
+let sorted = undefined
+let chart1, chart2
+
 const navigation = new Navigate(
     mainPages,
     loginButton,

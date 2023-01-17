@@ -1,4 +1,7 @@
-const addCharts = async (ctx1, ctx2, currentUser) => {
+const addCharts = async (currentUser) => {
+    const ctx1 = document.getElementById("graph1")
+    const ctx2 = document.getElementById("graph2")
+
     let transactions = []
     const dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
 
@@ -147,7 +150,6 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
         }
     }
 }
-
 
 const updateChart1 = (chart, labels, data, text) => {
     const result = []

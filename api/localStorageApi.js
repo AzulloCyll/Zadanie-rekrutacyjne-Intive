@@ -6,6 +6,9 @@ class LocalStorageApi {
             password: "",
         }
         this.users = []
+        this.elementWithData = document.querySelector(
+    "main > div.logged > div.downPage > div.data"
+)
     }
 
     getUsers = () => {
@@ -72,8 +75,8 @@ class LocalStorageApi {
             this.setCurrentUser(newUser)
             navigation.gotoLoggedView()
 
-            addCharts(ctx1, ctx2, localStorageApi.currentUser)
-            generateDataArticles(loggedDownPage, this.currentUser)
+            addCharts(localStorageApi.currentUser)
+            generateDataArticles(this.elementWithData, this.currentUser)
         }
     }
 
@@ -116,8 +119,8 @@ class LocalStorageApi {
         this.setCurrentUser(user)
         changeUsername(user.login)
 
-        addCharts(ctx1, ctx2, localStorageApi.currentUser)
-        generateDataArticles(loggedDownPage, this.currentUser)
+        addCharts(localStorageApi.currentUser)
+        generateDataArticles(this.elementWithData, this.currentUser)
     }
 
     loginUser = (login, password) => {
@@ -180,8 +183,8 @@ class LocalStorageApi {
             if (this.currentUser && this.currentUser.login !== "") {
                 navigation.gotoLoggedView()
 
-                addCharts(ctx1, ctx2, localStorageApi.currentUser)
-                generateDataArticles(loggedDownPage, this.currentUser)
+                addCharts(localStorageApi.currentUser)
+                generateDataArticles(this.elementWithData, this.currentUser)
             }
         })
     }
