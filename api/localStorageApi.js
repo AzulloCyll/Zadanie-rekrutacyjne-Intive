@@ -10,6 +10,7 @@ class LocalStorageApi {
             "main > div.logged > div.downPage > div.data"
         )
         this.modals = document.getElementsByClassName("modal")
+        this.errors = document.getElementsByClassName("errors")
     }
 
     getUsers = () => {
@@ -46,24 +47,24 @@ class LocalStorageApi {
             dataSet: randomFromMaxInteger(dataFile.length),
         }
 
-        hideAll(errors)
+        hideAll(this.errors)
 
         const isUserExist = this.checkIfUserExist(newUser, this.users)
         const isEmailExists = this.checkIfEmailExists(newUser, this.users)
 
         if (isUserExist && !isEmailExists) {
-            show(errors[6])
+            show(this.errors[6])
             show(this.modals[0])
         }
 
         if (!isUserExist && isEmailExists) {
-            show(errors[7])
+            show(this.errors[7])
             show(this.modals[0])
         }
 
         if (isUserExist && isEmailExists) {
-            show(errors[6])
-            show(errors[7])
+            show(this.errors[6])
+            show(this.errors[7])
             show(this.modals[0])
         }
 
@@ -115,7 +116,7 @@ class LocalStorageApi {
     }
 
     showData = (user) => {
-        hideAll(errors)
+        hideAll(this.errors)
         navigation.gotoLoggedView()
         this.setCurrentUser(user)
         changeUsername(user.login)
@@ -149,14 +150,14 @@ class LocalStorageApi {
             }
 
             if (!isUserExist && !isCredentialsGoodAndReturnUser) {
-                hideAll(errors)
-                show(errors[8])
+                hideAll(this.errors)
+                show(this.errors[8])
                 show(this.modals[0])
             }
 
             if (isUserExist && !isCredentialsGoodAndReturnUser) {
-                hideAll(errors)
-                show(errors[9])
+                hideAll(this.errors)
+                show(this.errors[9])
                 show(this.modals[0])
             }
         } else {
@@ -168,8 +169,8 @@ class LocalStorageApi {
                 // if login is email and not registered
                 show(this.modals[1])
             } else {
-                hideAll(errors)
-                show(errors[9])
+                hideAll(this.errors)
+                show(this.errors[9])
                 show(this.modals[0])
             }
         }

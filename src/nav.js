@@ -1,22 +1,17 @@
 class Navigate {
-    constructor(
-        loginButton,
-        registerButton,
-        modal1RegisterButton,
-        modalXButtons
-    ) {
+    constructor() {
         this.nav = document.querySelectorAll("body > header > nav > ul > li")
         this.pages = document.querySelectorAll("main > div")
-        this.loginButton = loginButton
+        this.loginButton = document.querySelector("button.login-btn")
         this.logoffButton = document.querySelector(".logoff-btn")
-        this.registerButton = registerButton
+        this.registerButton = document.querySelector(".register-btn")
         this.modals = document.getElementsByClassName("modal")
         this.loginAndRegisterModalBackBtn = document.querySelector(
             ".loginRegisterModalBack-btn"
         )
         this.adModalBackBtn = document.querySelector(".adModalBack-btn")
-        this.modal1RegisterButton = modal1RegisterButton
-        this.modalXButtons = modalXButtons
+        this.adModalRegisterButton = document.querySelector(".register2-btn")
+        this.modalXButtons = document.querySelectorAll(".x-button")
     }
 
     gotoLoginView = () => {
@@ -107,7 +102,7 @@ class Navigate {
         })
 
         // go to registration button
-        this.modal1RegisterButton.addEventListener("click", () => {
+        this.adModalRegisterButton.addEventListener("click", () => {
             this.closeModal(this.modals[1])
             registerForm.email.value = loginForm.name.value
             navigation.gotoRegisterView()

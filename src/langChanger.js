@@ -1,8 +1,5 @@
-const langNav = document.querySelectorAll(".lang > a")
-const PL = langNav[0]
-const EN = langNav[1]
-
-const setLanguage = (lang) => {
+const setLanguage = (lang, loginForm, registerForm) => {
+    // navigation
     document.querySelectorAll("body > header > nav > ul > li")[0].innerHTML =
         dictionary[lang].nav.login
     document.querySelectorAll("body > header > nav > ul > li")[1].innerHTML =
@@ -13,7 +10,8 @@ const setLanguage = (lang) => {
         dictionary[lang].buttons.back
     document.querySelector(".adModalBack-btn").innerHTML =
         dictionary[lang].buttons.back
-    loginModalRegisterButton.innerHTML = dictionary[lang].buttons.register
+    document.querySelector(".register2-btn").innerHTML =
+        dictionary[lang].buttons.register
 
     // starting screen
     document.querySelector(".unlogged h1").innerHTML =
@@ -139,6 +137,7 @@ const setLanguage = (lang) => {
     }
 
     // sort
+    const sortButton = document.querySelector(".sort-btn")
     const sortButtonText = sortButton.getElementsByTagName("span")[0]
     sortButtonText.innerHTML = dictionary[lang].text.sort
 }
@@ -148,14 +147,14 @@ const initLanguageChanger = () => {
         lang = "pl"
         PL.classList.add("active")
         EN.classList.remove("active")
-        setLanguage("pl")
+        setLanguage("pl", loginForm, registerForm)
     })
 
     EN.addEventListener("click", () => {
         lang = "en"
         EN.classList.add("active")
         PL.classList.remove("active")
-        setLanguage("en")
+        setLanguage("en", loginForm, registerForm)
     })
 }
 
