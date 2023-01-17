@@ -11,9 +11,16 @@ const searchByDescription = (data, input) => {
 }
 
 const initSearch = () => {
+    const searchInput = document.getElementById("search")
+    const searchButton = document.querySelector(".search-btn")
+
+    const elementWithData = document.querySelector(
+        "main > div.logged > div.downPage > div.data"
+    )
+
     searchButton.addEventListener("click", () => {
         generateDataArticles(
-            loggedDownPage,
+            elementWithData,
             localStorageApi.currentUser,
             searchInput.value
         )
@@ -21,7 +28,7 @@ const initSearch = () => {
     searchInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
             generateDataArticles(
-                loggedDownPage,
+                elementWithData,
                 localStorageApi.currentUser,
                 searchInput.value
             )

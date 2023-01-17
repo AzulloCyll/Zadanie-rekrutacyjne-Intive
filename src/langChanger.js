@@ -1,9 +1,18 @@
+const langNav = document.querySelectorAll(".lang > a")
+const PL = langNav[0]
+const EN = langNav[1]
+
 const setLanguage = (lang) => {
-    document.querySelectorAll("body > header > nav > ul > li")[0].innerHTML = dictionary[lang].nav.login
-    document.querySelectorAll("body > header > nav > ul > li")[1].innerHTML = dictionary[lang].nav.register
-    document.querySelector(".logoff-btn").innerHTML = dictionary[lang].buttons.logout
-    document.querySelector(".registerModalBack-btn").innerHTML = dictionary[lang].buttons.back
-    document.querySelector(".adModalBack-btn").innerHTML = dictionary[lang].buttons.back
+    document.querySelectorAll("body > header > nav > ul > li")[0].innerHTML =
+        dictionary[lang].nav.login
+    document.querySelectorAll("body > header > nav > ul > li")[1].innerHTML =
+        dictionary[lang].nav.register
+    document.querySelector(".logoff-btn").innerHTML =
+        dictionary[lang].buttons.logout
+    document.querySelector(".loginRegisterModalBack-btn").innerHTML =
+        dictionary[lang].buttons.back
+    document.querySelector(".adModalBack-btn").innerHTML =
+        dictionary[lang].buttons.back
     loginModalRegisterButton.innerHTML = dictionary[lang].buttons.register
 
     // starting screen
@@ -125,7 +134,7 @@ const setLanguage = (lang) => {
     }
 
     const sortBackButton = document.querySelector(".sortBack-btn")
-     if (sortBackButton) {
+    if (sortBackButton) {
         sortBackButton.innerHTML = dictionary[lang].buttons.back
     }
 

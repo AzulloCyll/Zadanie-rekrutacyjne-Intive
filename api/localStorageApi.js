@@ -7,8 +7,9 @@ class LocalStorageApi {
         }
         this.users = []
         this.elementWithData = document.querySelector(
-    "main > div.logged > div.downPage > div.data"
-)
+            "main > div.logged > div.downPage > div.data"
+        )
+        this.modals = document.getElementsByClassName("modal")
     }
 
     getUsers = () => {
@@ -52,18 +53,18 @@ class LocalStorageApi {
 
         if (isUserExist && !isEmailExists) {
             show(errors[6])
-            show(modals[0])
+            show(this.modals[0])
         }
 
         if (!isUserExist && isEmailExists) {
             show(errors[7])
-            show(modals[0])
+            show(this.modals[0])
         }
 
         if (isUserExist && isEmailExists) {
             show(errors[6])
             show(errors[7])
-            show(modals[0])
+            show(this.modals[0])
         }
 
         if (!isUserExist && !isEmailExists) {
@@ -150,13 +151,13 @@ class LocalStorageApi {
             if (!isUserExist && !isCredentialsGoodAndReturnUser) {
                 hideAll(errors)
                 show(errors[8])
-                show(modals[0])
+                show(this.modals[0])
             }
 
             if (isUserExist && !isCredentialsGoodAndReturnUser) {
                 hideAll(errors)
                 show(errors[9])
-                show(modals[0])
+                show(this.modals[0])
             }
         } else {
             if (isEmailExist && isCredentialsGoodAndReturnUser) {
@@ -165,11 +166,11 @@ class LocalStorageApi {
                 this.showData(this.currentUser)
             } else if (!isEmailExist) {
                 // if login is email and not registered
-                show(modals[1])
+                show(this.modals[1])
             } else {
                 hideAll(errors)
                 show(errors[9])
-                show(modals[0])
+                show(this.modals[0])
             }
         }
     }

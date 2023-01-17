@@ -1,19 +1,19 @@
 class Navigate {
     constructor(
-        pages,
         loginButton,
         registerButton,
-        modals,
         modal1RegisterButton,
         modalXButtons
     ) {
         this.nav = document.querySelectorAll("body > header > nav > ul > li")
-        this.pages = pages
+        this.pages = document.querySelectorAll("main > div")
         this.loginButton = loginButton
         this.logoffButton = document.querySelector(".logoff-btn")
         this.registerButton = registerButton
-        this.modals = modals
-        this.registerModalBackBtn = document.querySelector(".registerModalBack-btn")
+        this.modals = document.getElementsByClassName("modal")
+        this.loginAndRegisterModalBackBtn = document.querySelector(
+            ".loginRegisterModalBack-btn"
+        )
         this.adModalBackBtn = document.querySelector(".adModalBack-btn")
         this.modal1RegisterButton = modal1RegisterButton
         this.modalXButtons = modalXButtons
@@ -75,7 +75,7 @@ class Navigate {
             // destroying charts
             chart1.destroy()
             chart2.destroy()
-            
+
             this.gotoUnloggedView()
         })
 
@@ -98,7 +98,7 @@ class Navigate {
                 )
         })
 
-        this.registerModalBackBtn.addEventListener("click", () => {
+        this.loginAndRegisterModalBackBtn.addEventListener("click", () => {
             this.closeModal(this.modals[0])
         })
 

@@ -2,6 +2,10 @@ const addCharts = async (currentUser) => {
     const ctx1 = document.getElementById("graph1")
     const ctx2 = document.getElementById("graph2")
 
+    const langNav = document.querySelectorAll(".lang > a")
+    const PL = langNav[0]
+    const EN = langNav[1]
+
     let transactions = []
     const dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
 
@@ -133,21 +137,17 @@ const addCharts = async (currentUser) => {
         },
     }
 
-        chart1 = await new Chart(ctx1, config1)
-        chart2 = await new Chart(ctx2, config2)
+    chart1 = await new Chart(ctx1, config1)
+    chart2 = await new Chart(ctx2, config2)
 
-    
+    PL.onclick = () => {
+        updateChart1(chart1, labelsPL, dataToView1, "Transakcje według typu")
+        updateChart2(chart2, "Saldo na koniec dnia")
+    }
 
-    if (chart1.ctx !== null && chart2.ctx !== null) {
-        PL.onclick = () => {
-            updateChart1(chart1, labelsPL, dataToView1, "Transakcje według typu")
-            updateChart2(chart2, "Saldo na koniec dnia")
-        }
-
-        EN.onclick = () => {
-            updateChart1(chart1, labelsEN, dataToView1, "Transactions by type")
-            updateChart2(chart2, "End of the day balance")
-        }
+    EN.onclick = () => {
+        updateChart1(chart1, labelsEN, dataToView1, "Transactions by type")
+        updateChart2(chart2, "End of the day balance")
     }
 }
 

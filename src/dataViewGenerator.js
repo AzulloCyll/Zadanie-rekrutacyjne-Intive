@@ -56,6 +56,8 @@ const generateDataArticles = async (element, currentUser, searchText) => {
 }
 
 const initSortBackButton = () => {
+    const searchButton = document.querySelector(".search-btn")
+    const searchInput = document.getElementById("search")
     const buttonBack = document.querySelector(".sortBack-btn")
 
     buttonBack.addEventListener("click", () => {
