@@ -26,6 +26,7 @@ const dictionary = {
             notFoundSecond: "in transaction description.",
             history: "Transactions history",
             sort: "sort",
+            notice: '<b>Notice:</b><br />Username have to be 6-16 letters, numbers and characters like "-_[]/",<br /> it must have at least 5 letters and 1 number.',
         },
         placeholders: {
             loginOrEmail: "type username or email",
@@ -79,6 +80,7 @@ const dictionary = {
             notFoundSecond: "w opisach transakcji.",
             history: "Historia transakcji",
             sort: "sortuj",
+            notice: '<b>Uwaga:</b><br />Nazwa użytkownika powinna mieć od 6 do 16 znaków,<br />którymi są litery, cyfry lub znaki "-_[]/", musi mieć conajmniej 5 liter i 1 cyfrę.',
         },
 
         placeholders: {

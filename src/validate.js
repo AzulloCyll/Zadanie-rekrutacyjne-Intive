@@ -26,6 +26,7 @@ const inputCompare = (input1, input2) => {
 }
 
 const showErrors = (...inputs) => {
+    const errors = document.getElementsByClassName("errors")
     hideAll(errors)
 
     if (!inputs[0]) {

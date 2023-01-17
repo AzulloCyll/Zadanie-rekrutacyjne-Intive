@@ -6,8 +6,8 @@ const langNav = document.querySelectorAll(".lang > a")
 const PL = langNav[0]
 const EN = langNav[1]
 
-const registerForm = document.getElementById("register")
 const loginForm = document.getElementById("login")
+const registerForm = document.getElementById("register")
 
 const navigation = new Navigate()
 const localStorageApi = new LocalStorageApi()
