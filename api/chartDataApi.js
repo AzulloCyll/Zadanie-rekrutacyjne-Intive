@@ -3,6 +3,8 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
     const dataSet = getDataFromDataObjectByNumber(dataFile, currentUser.dataSet)
 
     const labels = getLabelsByLanguage(lang)
+    const labelsPL = dictionary.pl.transactionTypes
+    const labelsEN = dictionary.en.transactionTypes
 
     if (dataSet) {
         transactions = [...dataSet]
@@ -132,12 +134,12 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
     const chart2 = await new Chart(ctx1, config2)
 
     PL.onclick = () => {
-        updateChart1(chart1, labels, dataToView1, "Transakcje według typu")
+        updateChart1(chart1, labelsPL, dataToView1, "Transakcje według typu")
         updateChart2(chart2, "Saldo na koniec dnia")
     }
 
     EN.onclick = () => {
-        updateChart1(chart1, labels, dataToView1, "Transactions by type")
+        updateChart1(chart1, labelsEN, dataToView1, "Transactions by type")
         updateChart2(chart2, "End of the day balance")
     }
 }
