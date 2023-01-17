@@ -130,19 +130,9 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
         },
     }
 
-    // if (chart1) {
-    //     updateChart1(chart1, labelsPL, dataToView1, "Transakcje według typu")
-    //     updateChart2(chart2, "End of the day balance")
-    // } else {
-    //     chart1 = await new Chart(ctx1, config1)
-    // }
+        chart1 = await new Chart(ctx1, config1)
+        chart2 = await new Chart(ctx2, config2)
 
-    // if (chart2) {
-    //     updateChart1(chart1, labelsEN, dataToView1, "Transactions by type")
-    //     updateChart2(chart2, "End of the day balance")
-    // } else {
-    //     chart2 = await new Chart(ctx2, config2)
-    // }
     
 
     if (chart1.ctx !== null && chart2.ctx !== null) {
