@@ -68,9 +68,18 @@ class Navigate {
             localStorageApi.getUsers()
             localStorageApi.deleteCurrentUser()
 
-            Chart.getChart("graph1") && Chart.getChart("graph1").destroy()
-            Chart.getChart("graph2") && Chart.getChart("graph2").destroy()
+            // cleaning form inputs
+            loginForm.name.value = ""
+            loginForm.passwd.value = ""
+            registerForm.name2.value = ""
+            registerForm.email.value = ""
+            registerForm.email2.value = ""
+            registerForm.passwd2.value = ""
 
+            // destroying charts
+            chart1.destroy()
+            chart2.destroy()
+            
             this.gotoUnloggedView()
         })
 

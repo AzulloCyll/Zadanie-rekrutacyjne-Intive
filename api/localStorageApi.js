@@ -74,12 +74,6 @@ class LocalStorageApi {
 
             addCharts(ctx1, ctx2, localStorageApi.currentUser)
             generateDataArticles(loggedDownPage, this.currentUser)
-
-            // cleaning form inputs
-            registerForm.name2.value = ""
-            registerForm.email.value = ""
-            registerForm.email2.value = ""
-            registerForm.passwd2.value = ""
         }
     }
 

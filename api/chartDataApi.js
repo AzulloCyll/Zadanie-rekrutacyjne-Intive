@@ -130,19 +130,22 @@ const addCharts = async (ctx1, ctx2, currentUser) => {
         },
     }
 
-    const chart1 = await new Chart(ctx2, config1)
-    const chart2 = await new Chart(ctx1, config2)
+    chart1 = await new Chart(ctx2, config1)
+    chart2 = await new Chart(ctx1, config2)
 
-    PL.onclick = () => {
-        updateChart1(chart1, labelsPL, dataToView1, "Transakcje według typu")
-        updateChart2(chart2, "Saldo na koniec dnia")
-    }
+    if (chart1.ctx !== null && chart2.ctx !== null) {
+        PL.onclick = () => {
+            updateChart1(chart1, labelsPL, dataToView1, "Transakcje według typu")
+            updateChart2(chart2, "Saldo na koniec dnia")
+        }
 
-    EN.onclick = () => {
-        updateChart1(chart1, labelsEN, dataToView1, "Transactions by type")
-        updateChart2(chart2, "End of the day balance")
+        EN.onclick = () => {
+            updateChart1(chart1, labelsEN, dataToView1, "Transactions by type")
+            updateChart2(chart2, "End of the day balance")
+        }
     }
 }
+
 
 const updateChart1 = (chart, labels, data, text) => {
     const result = []
