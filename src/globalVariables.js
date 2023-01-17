@@ -26,14 +26,14 @@ const registerForm = document.getElementById("register")
 const registerButton = document.querySelector(".register-btn")
 const loginForm = document.getElementById("login")
 const loginButton = document.querySelector("button.login-btn")
-const logoffButton = document.querySelector("button.button-small")
+
 const errors = document.getElementsByClassName("errors")
 
 //modals
 const modals = document.getElementsByClassName("modal")
-const registerModalCloseButton = document.querySelector(".closeModal-btn")
-const loginModalCloseButton = document.querySelector(".close2Modal-btn")
+
+const loginModalCloseButton = document.querySelector(".adModalBack-btn")
 const loginModalRegisterButton = document.querySelector(".register2-btn")
-const xButtons = document.querySelectorAll(".x-button")
+const modalXButtons = document.querySelectorAll(".x-button")
 
 const sortButton = document.querySelector(".sort-btn")

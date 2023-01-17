@@ -1,14 +1,10 @@
 const navigation = new Navigate(
-    nav,
     mainPages,
     loginButton,
-    logoffButton,
     registerButton,
     modals,
-    registerModalCloseButton,
-    loginModalCloseButton,
     loginModalRegisterButton,
-    xButtons
+    modalXButtons
 )
 
 const localStorageApi = new LocalStorageApi()

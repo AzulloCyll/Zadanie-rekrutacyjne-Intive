@@ -1,26 +1,22 @@
 class Navigate {
     constructor(
-        nav,
         pages,
         loginButton,
-        logoffButton,
         registerButton,
         modals,
-        modal0CloseButton,
-        modal1CloseButton,
         modal1RegisterButton,
-        xButtons
+        modalXButtons
     ) {
-        this.nav = nav
+        this.nav = document.querySelectorAll("body > header > nav > ul > li")
         this.pages = pages
         this.loginButton = loginButton
-        this.logoffButton = logoffButton
+        this.logoffButton = document.querySelector(".logoff-btn")
         this.registerButton = registerButton
         this.modals = modals
-        this.modal0CloseButton = modal0CloseButton
-        this.modal1CloseButton = modal1CloseButton
+        this.registerModalBackBtn = document.querySelector(".registerModalBack-btn")
+        this.adModalBackBtn = document.querySelector(".adModalBack-btn")
         this.modal1RegisterButton = modal1RegisterButton
-        this.xButtons = xButtons
+        this.modalXButtons = modalXButtons
     }
 
     gotoLoginView = () => {
@@ -102,11 +98,11 @@ class Navigate {
                 )
         })
 
-        this.modal0CloseButton.addEventListener("click", () => {
+        this.registerModalBackBtn.addEventListener("click", () => {
             this.closeModal(this.modals[0])
         })
 
-        this.modal1CloseButton.addEventListener("click", () => {
+        this.adModalBackBtn.addEventListener("click", () => {
             this.closeModal(this.modals[1])
         })
 
@@ -118,7 +114,7 @@ class Navigate {
         })
 
         // x buttons on modals
-        this.xButtons.forEach((button) => {
+        this.modalXButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 this.closeModal(this.modals[0])
                 this.closeModal(this.modals[1])

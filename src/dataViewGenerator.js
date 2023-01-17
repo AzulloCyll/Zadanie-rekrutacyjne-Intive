@@ -55,8 +55,8 @@ const generateDataArticles = async (element, currentUser, searchText) => {
     addEventListeners(articles)
 }
 
-const initBackButton = () => {
-    const buttonBack = document.querySelector(".back-btn")
+const initSortBackButton = () => {
+    const buttonBack = document.querySelector(".sortBack-btn")
 
     buttonBack.addEventListener("click", () => {
         searchInput.value = ""
@@ -110,22 +110,22 @@ const generateArticlesBottom = (element, transactions, searchText) => {
             <span class="second">w opisach transakcji.</span>
             <br>
             <br>
-            <button class="button back-btn">Powrót</button>          
+            <button class="button sortBack-btn">Powrót</button>          
         </p>
         `
-        initBackButton()
+        initSortBackButton()
         refreshLang()
     } else if (articles.length !== transactions.length) {
         const p = document.createElement("p")
         p.classList.add("marginless")
 
         const buttonBack = document.createElement("button")
-        buttonBack.classList.add("button", "back-btn")
+        buttonBack.classList.add("button", "sortBack-btn")
         buttonBack.innerHTML = "Powrót"
 
         p.append(buttonBack)
         element.append(p)
-        initBackButton()
+        initSortBackButton()
         refreshLang()
     }
 }

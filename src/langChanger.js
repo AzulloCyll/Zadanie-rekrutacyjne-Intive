@@ -1,10 +1,9 @@
 const setLanguage = (lang) => {
-    // navigation
-    nav[0].innerHTML = dictionary[lang].nav.login
-    nav[1].innerHTML = dictionary[lang].nav.register
-    logoffButton.innerHTML = dictionary[lang].buttons.logout
-    registerModalCloseButton.innerHTML = dictionary[lang].buttons.back
-    loginModalCloseButton.innerHTML = dictionary[lang].buttons.back
+    document.querySelectorAll("body > header > nav > ul > li")[0].innerHTML = dictionary[lang].nav.login
+    document.querySelectorAll("body > header > nav > ul > li")[1].innerHTML = dictionary[lang].nav.register
+    document.querySelector(".logoff-btn").innerHTML = dictionary[lang].buttons.logout
+    document.querySelector(".registerModalBack-btn").innerHTML = dictionary[lang].buttons.back
+    document.querySelector(".adModalBack-btn").innerHTML = dictionary[lang].buttons.back
     loginModalRegisterButton.innerHTML = dictionary[lang].buttons.register
 
     // starting screen
@@ -125,13 +124,13 @@ const setLanguage = (lang) => {
         second.innerHTML = dictionary[lang].text.notFoundSecond
     }
 
-    const backButton = document.querySelector("p.not-found .back-btn")
-    if (backButton) {
-        backButton.innerHTML = dictionary[lang].buttons.back
+    const sortBackButton = document.querySelector(".sortBack-btn")
+     if (sortBackButton) {
+        sortBackButton.innerHTML = dictionary[lang].buttons.back
     }
 
     // sort
-    sortButtonText = sortButton.getElementsByTagName("span")[0]
+    const sortButtonText = sortButton.getElementsByTagName("span")[0]
     sortButtonText.innerHTML = dictionary[lang].text.sort
 }
 
