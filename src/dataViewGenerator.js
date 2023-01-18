@@ -28,6 +28,7 @@ const generateDataArticles = async (element, currentUser, searchText) => {
         ]
     }
 
+    console.log(sorted);
     // sorting
     if (sorted) {
         transactionsWithId = [
@@ -39,10 +40,10 @@ const generateDataArticles = async (element, currentUser, searchText) => {
 
     const dateArray = []
 
-    // generate lines with date
+    // generate lines
     for (transaction of transactionsWithId) {
         if (!dateArray.includes(transaction.date)) {
-            generateLineWithDate(transaction, element)
+            if (!sorted) generateLineWithDate(transaction, element)
             dateArray.push(transaction.date)
         }
 

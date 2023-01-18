@@ -1,5 +1,5 @@
 let lang = "pl"
-let sorted = "asc"
+let sorted = undefined
 let chart1, chart2
 
 const langNav = document.querySelectorAll(".lang > a")
