@@ -19,21 +19,10 @@ const generateDataArticles = async (element, currentUser, searchText) => {
         transactions = data.transactions
     }
 
-    const transactionsWithId = addId(transactions)
+    let transactionsWithId = addId(transactions)
 
-    // search
-    if (searchText !== undefined) {
-        transactionsWithId = [
-            ...searchByDescription(transactionsWithId, searchText),
-        ]
-    }
-
-    // sorting
-    if (sorted) {
-        transactionsWithId = [
-            ...sortByTransactionType(transactionsWithId, sorted),
-        ]
-    }
+    transactionsWithId = searchAndReturn(transactionsWithId, searchText)
+    transactionsWithId = sortAndReturn(transactionsWithId, sorted)
 
     element.innerHTML = ""
 

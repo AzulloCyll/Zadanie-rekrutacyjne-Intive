@@ -13,8 +13,13 @@ const sortByTransactionType = (data, vector) => {
     }
 }
 
-const initSortButton = () => {
+const sortAndReturn = (transactions, sorted) => {
+    return sorted
+        ? [...sortByTransactionType(transactions, sorted)]
+        : [...transactions]
+}
 
+const initSortButton = () => {
     const elementWithData = document.querySelector(
         "main > div.logged > div.downPage > div.data"
     )

@@ -63,11 +63,11 @@ const dataFile = [
             type: 1,
             amount: -78.33,
             balance: 3027.51,
-            description: "PayU Spółka Akcyjna",
+            description: "Blik",
         },
         {
             date: "2022-11-02",
-            type: 2,
+            type: 1,
             amount: -78.33,
             balance: 3027.51,
             description: "Twisto",

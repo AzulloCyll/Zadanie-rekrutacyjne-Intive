@@ -10,6 +10,12 @@ const searchByDescription = (data, input) => {
     return foundData
 }
 
+const searchAndReturn = (transactions, searchText) => {
+    return searchText !== undefined
+        ? [...searchByDescription(transactions, searchText)]
+        : [...transactions]
+}
+
 const initSearch = () => {
     const searchInput = document.getElementById("search")
     const searchButton = document.querySelector(".search-btn")
