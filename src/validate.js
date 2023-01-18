@@ -61,6 +61,13 @@ const validate = () => {
     )
     const passwordStatus = validatePassword(registerForm.passwd2)
 
+    const checkAll =
+        nameStatus &&
+        emailStatus &&
+        email2Status &&
+        emailCompareStatus &&
+        passwordStatus
+
     showErrors(
         nameStatus,
         emailStatus,
@@ -69,14 +76,8 @@ const validate = () => {
         passwordStatus
     )
 
-    // set validation status
-    if (
-        nameStatus &&
-        emailStatus &&
-        email2Status &&
-        emailCompareStatus &&
-        passwordStatus
-    ) {
+    // return validation status
+    if (checkAll) {
         return true
     } else return false
 }

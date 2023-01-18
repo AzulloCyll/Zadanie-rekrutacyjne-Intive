@@ -1,13 +1,9 @@
 const searchByDescription = (data, input) => {
-    const foundData = []
-
-    for (item of data) {
-        if (item.description.toLowerCase().includes(input.toLowerCase())) {
-            foundData.push(item)
-        }
-    }
-
-    return foundData
+    return data.filter((item) => {
+        return (
+            item.description.toLowerCase().includes(input.toLowerCase()) && item
+        )
+    })
 }
 
 const searchAndReturn = (transactions, searchText) => {

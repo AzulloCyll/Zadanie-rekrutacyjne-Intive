@@ -46,6 +46,27 @@ class Navigate {
         hide(element)
     }
 
+    clean = () => {
+        // cleaning form inputs
+        loginForm.name.value = ""
+        loginForm.passwd.value = ""
+        registerForm.name2.value = ""
+        registerForm.email.value = ""
+        registerForm.email2.value = ""
+        registerForm.passwd2.value = ""
+
+        // destroying charts
+        chart1.destroy()
+        chart2.destroy()
+
+        // refreshing sort button
+        sorted = undefined
+        document.querySelectorAll(".sort-btn span")[1].innerHTML = ""
+
+        // cleanig data page
+        document.querySelector(".data").innerHTML = "Loading"
+    }
+
     init = () => {
         this.nav[0].addEventListener("click", () => {
             this.gotoLoginView()
@@ -59,25 +80,7 @@ class Navigate {
             localStorageApi.getUsers()
             localStorageApi.deleteCurrentUser()
 
-            // cleaning form inputs
-            loginForm.name.value = ""
-            loginForm.passwd.value = ""
-            registerForm.name2.value = ""
-            registerForm.email.value = ""
-            registerForm.email2.value = ""
-            registerForm.passwd2.value = ""
-
-            // destroying charts
-            chart1.destroy()
-            chart2.destroy()
-
-            // refreshing sort button
-            sorted = undefined
-            document.querySelectorAll(".sort-btn span")[1].innerHTML = ""
-
-            // cleanig data page
-            document.querySelector(".data").innerHTML = "Loading"
-
+            this.clean()
             this.gotoUnloggedView()
         })
 
