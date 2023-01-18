@@ -28,7 +28,6 @@ const generateDataArticles = async (element, currentUser, searchText) => {
         ]
     }
 
-    console.log(sorted);
     // sorting
     if (sorted) {
         transactionsWithId = [

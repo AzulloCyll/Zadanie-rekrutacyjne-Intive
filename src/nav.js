@@ -71,6 +71,13 @@ class Navigate {
             chart1.destroy()
             chart2.destroy()
 
+            // refreshing sort button
+            sorted = undefined
+            document.querySelectorAll(".sort-btn span")[1].innerHTML = ""
+
+            // cleanig data page
+            document.querySelector(".data").innerHTML = "Loading"
+
             this.gotoUnloggedView()
         })
 
