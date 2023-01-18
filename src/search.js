@@ -1,10 +1,8 @@
-const searchByDescription = (data, input) => {
-    return data.filter((item) => {
-        return (
+const searchByDescription = (data, input) =>
+    data.filter(
+        (item) =>
             item.description.toLowerCase().includes(input.toLowerCase()) && item
-        )
-    })
-}
+    )
 
 const searchAndReturn = (transactions, searchText) => {
     return searchText !== undefined
