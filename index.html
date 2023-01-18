@@ -1,218 +1,182 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./styles/main.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
-            rel="stylesheet"
-        />
-        <title>Zadanie rekrutacyjne Intive</title>
-        <script
-            src="https://kit.fontawesome.com/61b36d7195.js"
-            crossorigin="anonymous"
-        ></script>
-    </head>
 
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li>Logowanie</li>
-                    <li>Rejestracja</li>
-                    <li class="hidden">
-                        <span class="username"></span>
-                        <button class="button-small logoff-btn">Wyloguj</button>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <div class="unlogged">
-                <h1>Witaj na stronie!</h1>
-                <p>Zaloguj się lub zarejestruj</p>
-            </div>
-            <div class="login hidden">
-                <h1>Logowanie</h1>
-                <p>
-                    Możesz logować się za pomocą nazwy użytkownika albo emaila
-                </p>
-                <form id="login">
-                    <div class="line">
-                        <label for="name">Login:</label>
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            placeholder="wpisz nazwę użytkownika lub email"
-                        />
-                    </div>
-                    <div class="line">
-                        <label for="passwd">Hasło:</label>
-                        <input
-                            type="password"
-                            name="passwd"
-                            id="passwd"
-                            placeholder="wpisz swoje hasło"
-                        />
-                    </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <title>Zadanie rekrutacyjne Intive</title>
+    <script src="https://kit.fontawesome.com/61b36d7195.js" crossorigin="anonymous"></script>
+</head>
 
-                    <div class="line">
-                        <button type="button" class="button login-btn">
-                            Zaloguj
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div class="register hidden">
-                <h1>Rejestracja</h1>
-                <form id="register">
-                    <div class="line">
-                        <label for="name2">Login:</label>
-                        <input
-                            type="text"
-                            name="name2"
-                            id="name2"
-                            placeholder="wpisz nazwę użytkownika"
-                        />
-                        <div class="errors hidden">
-                            nieprawidłowa nazwa - patrz niżej na wskazówkę
-                        </div>
-                    </div>
-                    <div class="line">
-                        <label for="email">email:</label>
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="wpisz swój email"
-                        />
-                        <div class="errors hidden">nieprawidłowy email</div>
-                        <div class="errors hidden">emaile niezgodne</div>
-                    </div>
-                    <div class="line">
-                        <label for="email2">Powtórz email:</label>
-                        <input
-                            type="email"
-                            name="email2"
-                            id="email2"
-                            placeholder="przepisz swój email"
-                        />
-                        <div class="errors hidden">nieprawidłowy email</div>
-                        <div class="errors hidden">emaile niezgodne</div>
-                    </div>
-                    <div class="line">
-                        <label for="passwd2">Hasło:</label>
-                        <input
-                            type="password"
-                            name="passwd2"
-                            id="passwd2"
-                            placeholder="wpisz swoje hasło"
-                        />
-                        <div class="errors hidden">minimum 6 znaków</div>
-                    </div>
-                    <div class="line">
-                        <button type="button" class="button register-btn">
-                            Zarejestruj
-                        </button>
-                    </div>
-                </form>
-                <p class="notice">
-                    <b>Uwaga:</b><br />Nazwa użytkownika powinna mieć od 6 do 16
-                    znaków,<br />którymi są litery, cyfry lub znaki "-_[]\/",
-                    musi mieć conajmniej 5 liter i 1 cyfrę.
-                </p>
-            </div>
-            <div class="logged hidden">
-                <div class="upPage">
-                    <div class="graphContainer">
-                        <div class="graph">
-                            <canvas id="graph1"></canvas>
-                        </div>
-                    </div>
-                    <div class="graphContainer">
-                        <div class="graph">
-                            <canvas id="graph2"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="downPage">
-                    <div class="nav">
-                        <div class="sort">
-                            <button class="button-small">
-                                <span class="sort-btn" data-vector="asc">
-                                    <span>Sortuj</span>
-                                    <span></span>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="search">
-                            <input type="text" id="search" name="search" />
-                            <button class="button-small search-btn">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <p class="history">Historia transakcji</p>
-                    <div class="data">Loading</div>
-                </div>
-            </div>
-        </main>
-        <div class="lang">
-            <span> Język:</span>
-            <a class="active">PL</a> |
-            <a> EN</a>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>Logowanie</li>
+                <li>Rejestracja</li>
+                <li class="hidden">
+                    <span class="username"></span>
+                    <button class="button-small logoff-btn">Wyloguj</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="unlogged">
+            <h1>Witaj na stronie!</h1>
+            <p>Zaloguj się lub zarejestruj</p>
         </div>
-        <div class="modal hidden">
-            <div class="info">
-                <div class="errors hidden">
-                    Podany użytkownik jest już zarejestrowany. Podaj inną nazwę
-                    uzytkownika.
+        <div class="login hidden">
+            <h1>Logowanie</h1>
+            <p>
+                Możesz logować się za pomocą nazwy użytkownika albo emaila
+            </p>
+            <form id="login">
+                <div class="line">
+                    <label for="name">Login:</label>
+                    <input type="text" name="name" id="name" placeholder="wpisz nazwę użytkownika lub email" />
                 </div>
-                <div class="errors hidden">
-                    Na jeden adres można założyc tylko jedno konto.
+                <div class="line">
+                    <label for="passwd">Hasło:</label>
+                    <input type="password" name="passwd" id="passwd" placeholder="wpisz swoje hasło" />
                 </div>
-                <div class="errors hidden">Nie ma takiego użytkownika.</div>
-                <div class="errors hidden">Nieprawidłowe hasło.</div>
-                <button class="button loginRegisterModalBack-btn">
-                    Powrót
-                </button>
+
+                <div class="line">
+                    <button type="button" class="button login-btn">
+                        Zaloguj
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="register hidden">
+            <h1>Rejestracja</h1>
+            <form id="register">
+                <div class="line">
+                    <label for="name2">Login:</label>
+                    <input type="text" name="name2" id="name2" placeholder="wpisz nazwę użytkownika" />
+                    <div class="errors hidden">
+                        nieprawidłowa nazwa - patrz niżej na wskazówkę
+                    </div>
+                </div>
+                <div class="line">
+                    <label for="email">email:</label>
+                    <input type="email" name="email" id="email" placeholder="wpisz swój email" />
+                    <div class="errors hidden">nieprawidłowy email</div>
+                    <div class="errors hidden">emaile niezgodne</div>
+                </div>
+                <div class="line">
+                    <label for="email2">Powtórz email:</label>
+                    <input type="email" name="email2" id="email2" placeholder="przepisz swój email" />
+                    <div class="errors hidden">nieprawidłowy email</div>
+                    <div class="errors hidden">emaile niezgodne</div>
+                </div>
+                <div class="line">
+                    <label for="passwd2">Hasło:</label>
+                    <input type="password" name="passwd2" id="passwd2" placeholder="wpisz swoje hasło" />
+                    <div class="errors hidden">minimum 6 znaków</div>
+                </div>
+                <div class="line">
+                    <button type="button" class="button register-btn">
+                        Zarejestruj
+                    </button>
+                </div>
+            </form>
+            <p class="notice">
+                <b>Uwaga:</b><br />Nazwa użytkownika powinna mieć od 6 do 16
+                znaków,<br />którymi są litery, cyfry lub znaki "-_[]\/",
+                musi mieć conajmniej 5 liter i 1 cyfrę.
+            </p>
+        </div>
+        <div class="logged hidden">
+            <div class="upPage">
+                <div class="graphContainer">
+                    <div class="graph">
+                        <canvas id="graph1"></canvas>
+                    </div>
+                </div>
+                <div class="graphContainer">
+                    <div class="graph">
+                        <canvas id="graph2"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="downPage">
+                <div class="nav">
+                    <div class="sort">
+                        <button class="button-small sort-btn" data-vector="asc">
+                            <span>Sortuj</span>
+                            <span><i class='fa-solid fa-caret-up'></i></span>
+                        </button>
+                    </div>
+                    <div class="search">
+                        <input type="text" id="search" name="search" />
+                        <button class="button-small search-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="history">Historia transakcji</p>
+                <div class="data">Loading</div>
+            </div>
+        </div>
+    </main>
+    <div class="lang">
+        <span> Język:</span>
+        <a class="active">PL</a> |
+        <a> EN</a>
+    </div>
+    <div class="modal hidden">
+        <div class="info">
+            <div class="errors hidden">
+                Podany użytkownik jest już zarejestrowany. Podaj inną nazwę
+                uzytkownika.
+            </div>
+            <div class="errors hidden">
+                Na jeden adres można założyc tylko jedno konto.
+            </div>
+            <div class="errors hidden">Nie ma takiego użytkownika.</div>
+            <div class="errors hidden">Nieprawidłowe hasło.</div>
+            <button class="button loginRegisterModalBack-btn">
+                Powrót
+            </button>
+            <button class="button x-button"></button>
+        </div>
+    </div>
+    <div class="modal ad hidden">
+        <div class="info">
+            <p>
+                Adresu email, ktory podałeś nie ma w&nbsp;naszej bazie.
+                <br />
+                Czy chcesz się zarejestrować?
+            </p>
+            <div class="buttons">
+                <button class="button adModalBack-btn">Powrót</button>
+                <button class="button register2-btn">Zarejestruj</button>
                 <button class="button x-button"></button>
             </div>
         </div>
-        <div class="modal ad hidden">
-            <div class="info">
-                <p>
-                    Adresu email, ktory podałeś nie ma w&nbsp;naszej bazie.
-                    <br />
-                    Czy chcesz się zarejestrować?
-                </p>
-                <div class="buttons">
-                    <button class="button adModalBack-btn">Powrót</button>
-                    <button class="button register2-btn">Zarejestruj</button>
-                    <button class="button x-button"></button>
-                </div>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <script src="./data/data.js"></script>
-        <script src="./src/utils.js"></script>
-        <script src="./api/dataApi.js"></script>
-        <script src="./src/dictionary.js"></script>
-        <script src="./src/langChanger.js"></script>
-        <script src="./src/validate.js"></script>
-        <script src="./src/nav.js"></script>
-        <script src="./api/localStorageApi.js"></script>
-        <script src="./src/dataViewGenerator.js"></script>
-        <script src="./src/hashingFn.js"></script>
-        <script src="./src/search.js"></script>
-        <script src="./src/sort.js"></script>
-        <script src="./api/chartDataApi.js"></script>
-        <script src="./src/index.js"></script>
-    </body>
+    <script src="./data/data.js"></script>
+    <script src="./src/utils.js"></script>
+    <script src="./api/dataApi.js"></script>
+    <script src="./src/dictionary.js"></script>
+    <script src="./src/langChanger.js"></script>
+    <script src="./src/validate.js"></script>
+    <script src="./src/nav.js"></script>
+    <script src="./api/localStorageApi.js"></script>
+    <script src="./src/dataViewGenerator.js"></script>
+    <script src="./src/hashingFn.js"></script>
+    <script src="./src/search.js"></script>
+    <script src="./src/sort.js"></script>
+    <script src="./api/chartDataApi.js"></script>
+    <script src="./src/index.js"></script>
+</body>
+
 </html>

@@ -138,7 +138,7 @@ const setLanguage = (lang, loginForm, registerForm) => {
 
     // sort
     const sortButton = document.querySelector(".sort-btn")
-    const sortButtonText = sortButton.getElementsByTagName("span")[0]
+    const sortButtonText = sortButton.querySelectorAll("span")[0]
     sortButtonText.innerHTML = dictionary[lang].text.sort
 
     // notice

@@ -48,7 +48,7 @@ const generateDataArticles = async (element, currentUser, searchText) => {
 
         element.append(generateArticle(transacationTypes))
 
-        refreshLang()
+        refreshLang() //prevents language to change
     }
 
     generateArticlesBottom(element, transactions, searchText)

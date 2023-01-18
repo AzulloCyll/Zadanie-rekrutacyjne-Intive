@@ -14,27 +14,26 @@ const sortByTransactionType = (data, vector) => {
 }
 
 const initSortButton = () => {
+
     const elementWithData = document.querySelector(
         "main > div.logged > div.downPage > div.data"
     )
     const sortButton = document.querySelector(".sort-btn")
 
+
     sortButton.addEventListener("click", (e) => {
-        const sortButtonIcon = sortButton.getElementsByTagName("span")[1]
-        if (sorted === undefined) {
-            sorted = e.currentTarget.getAttribute("data-vector")
-            generateDataArticles(elementWithData, localStorageApi.currentUser)
-            sortButtonIcon.innerHTML = "<i class='fa-solid fa-caret-up'></i>"
-        } else if (sorted === "asc") {
-            sorted = "desc"
-            e.currentTarget.setAttribute("data-vector", "asc")
-            generateDataArticles(elementWithData, localStorageApi.currentUser)
-            sortButtonIcon.innerHTML = "<i class='fa-solid fa-caret-down'></i>"
-        } else if (sorted === "desc") {
-            sorted = "asc"
-            e.currentTarget.setAttribute("data-vector", "desc")
-            generateDataArticles(elementWithData, localStorageApi.currentUser)
-            sortButtonIcon.innerHTML = "<i class='fa-solid fa-caret-up'></i>"
-        }
-    })
+        const sortButtonIcon = sortButton.querySelectorAll("span")[1]
+        
+        if (sorted === "asc") {
+                sorted = "desc"
+                e.currentTarget.parentElement.setAttribute("data-vector", "asc")
+                generateDataArticles(elementWithData, localStorageApi.currentUser)
+                sortButtonIcon.innerHTML = "<i class='fa-solid fa-caret-down'></i>"
+            } else if (sorted === "desc") {
+                sorted = "asc"
+                e.currentTarget.parentElement.setAttribute("data-vector", "desc")
+                generateDataArticles(elementWithData, localStorageApi.currentUser)
+                sortButtonIcon.innerHTML = "<i class='fa-solid fa-caret-up'></i>"
+            }
+        })
 }

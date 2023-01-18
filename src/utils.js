@@ -32,5 +32,3 @@ const getDataFromDataObjectByNumber = (data, number) => {
     return data[number] ? data[number] : false
 }
 
-const getNumber = randomFromMaxInteger(dataFile.length)
-const dataSelected = getDataFromDataObjectByNumber(dataFile, getNumber)
