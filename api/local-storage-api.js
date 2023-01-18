@@ -83,18 +83,22 @@ class LocalStorageApi {
     }
 
     checkIfUserExist = (userToFind, users) => {
-        let user = users.find((user) => userToFind.login === user.login)
+        const user = users.find((user) => userToFind.login === user.login)
         return user ? 1 : 0
     }
 
     checkIfEmailExists = (userToFind, users) => {
-        let user = users.find((user) => userToFind.email === user.email)
+        const user = users.find((user) => userToFind.email === user.email)
         return user ? 1 : 0
     }
 
     checkIfPasswordCorrect = (userToFind, users) => {
-        let foundByUser = users.find((user) => userToFind.login === user.login)
-        let foundByEmail = users.find((user) => userToFind.login === user.email)
+        const foundByUser = users.find(
+            (user) => userToFind.login === user.login
+        )
+        const foundByEmail = users.find(
+            (user) => userToFind.login === user.email
+        )
 
         if (foundByUser) {
             if (

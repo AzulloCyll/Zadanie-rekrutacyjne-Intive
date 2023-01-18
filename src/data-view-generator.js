@@ -19,7 +19,7 @@ const generateDataArticles = async (element, currentUser, searchText) => {
         transactions = data.transactions
     }
 
-    let transactionsWithId = addId(transactions)
+    const transactionsWithId = addId(transactions)
 
     // search
     if (searchText !== undefined) {
@@ -169,7 +169,7 @@ const closeAllTransactions = (articles) => {
 const addId = (transactions) => {
     const result = []
     for (let transaction of transactions) {
-        let uniqueId = Math.floor(
+        const uniqueId = Math.floor(
             Math.random() * Math.floor(Math.random() * Date.now())
         )
         transaction = { ...transaction, id: uniqueId }
